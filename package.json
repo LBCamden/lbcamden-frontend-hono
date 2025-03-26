@@ -1,0 +1,43 @@
+{
+  "name": "lbcamden-frontend-hono-jsx",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./vite": {
+      "import": "./dist/vite.js",
+      "types": "./dist/types/vite.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc",
+    "codegen": "tsx bin/codegen.ts",
+    "scaffold": "tsx bin/scaffold.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "peerDependencies": {
+    "lbcamden-frontend": "^1.0.2",
+    "govuk-frontend": "^5.9.0"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@hono/vite-dev-server": "^0.19.0",
+    "@types/node": "^22.13.13",
+    "lbcamden-frontend": "^1.0.2",
+    "govuk-frontend": "^5.9.0",
+    "hono": "^4.7.5",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.3",
+    "vite-plugin-nunjucks-loader": "github:lbcamden/vite-plugin-nunjucks-loader"
+  }
+}

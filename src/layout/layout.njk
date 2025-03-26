@@ -1,0 +1,102 @@
+{% extends "node_modules/lbcamden-frontend/lbcamden/template.njk" %}
+
+{%- set assetUrl = params.assetUrl -%}
+{%- set assetPath = params.assetPath -%}
+{%- set htmlClasses = params.htmlClasses -%}
+
+{% block headIcons %}
+{% if params.headIcons %}
+{{params.headIcons|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block head %}
+{% if params.head %}
+{{params.head|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block bodyStart %}
+{% if params.bodyStart %}
+{{params.bodyStart|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+
+{% block skipLink %}
+{% if params.skipLink %}
+{{params.skipLink|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if params.header %}
+{{params.header|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block main %}
+{% if params.main %}
+{{params.main|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+{% if params.beforeContent %}
+{{params.beforeContent|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if params.content %}
+{{params.content|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block postContent %}
+{% if params.postContent %}
+{{params.postContent|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block afterContent %}
+{% if params.afterContent %}
+{{params.afterContent|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block footer %}
+{% if params.footer %}
+{{params.footer|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block bodyEnd %}
+{% if params.bodyEnd %}
+{{params.bodyEnd|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
