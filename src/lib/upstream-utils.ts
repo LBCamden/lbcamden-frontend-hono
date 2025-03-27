@@ -61,13 +61,17 @@ export async function scaffoldComponents(conf: UpstreamOpts) {
 export async function genInterfaces(conf: UpstreamOpts) {
   const buf: string[] = []
 
+  buf.push('import { FC } from "hono/jsx"\n')
+  buf.push('\n')
+
   for await (const { component, opts } of readComponents(conf)) {
     const componentName = getComponentName(component, conf)
+    const componentTemplateName = getComponentName(component, conf) + 'Template'
     const componentPropsName = getComponentPropsName(component, conf)
     const moduleName = getComponentUpstreamSource(component, conf)
 
-    buf.push('declare module', `"${moduleName}"`, '{')
-    buf.push('\import { HtmlEscapedString } from "hono/utils/html"\n\n')
+    buf.push('import', componentTemplateName, 'from', `"${moduleName}"\n`)
+    buf.push('\n')
 
     buf.push('export interface', componentPropsName)
     buf.push(...genRecordType(opts, componentName))
@@ -75,10 +79,7 @@ export async function genInterfaces(conf: UpstreamOpts) {
     buf.push('\n')
     buf.push('\n')
 
-    buf.push('export default function', componentName, '(', 'props:', componentPropsName, ')', ':', 'HtmlEscapedString', ';')
-
-    buf.push('}')
-    buf.push('\n')
+    buf.push('export const', componentName, '=', componentTemplateName, 'as', 'FC<', componentPropsName, '>\n')
     buf.push('\n')
   }
 

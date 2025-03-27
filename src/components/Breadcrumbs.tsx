@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKBreadcrumbs, {
+import {
+  GovUKBreadcrumbs,
   type GovUKBreadcrumbsProps,
-} from "govuk-frontend/dist/govuk/components/breadcrumbs/template.njk";
+} from "../upstream/govuk";
 import { mapAsync, honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface BreadcrumbsProps extends Omit<GovUKBreadcrumbsProps, "items"> {

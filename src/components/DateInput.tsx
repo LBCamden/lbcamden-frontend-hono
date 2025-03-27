@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKDateInput, {
-  type GovUKDateInputProps,
-} from "govuk-frontend/dist/govuk/components/date-input/template.njk";
+import { GovUKDateInput, type GovUKDateInputProps } from "../upstream/govuk";
 
 export interface DateInputProps extends Omit<GovUKDateInputProps, "formGroup"> {
   children?: Child;

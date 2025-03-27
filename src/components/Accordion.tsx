@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKAccordion, {
-  type GovUKAccordionProps,
-} from "govuk-frontend/dist/govuk/components/accordion/template.njk";
+import { GovUKAccordion, type GovUKAccordionProps } from "../upstream/govuk";
 import { mapAsync, honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface AccordionProps extends Omit<GovUKAccordionProps, "items"> {

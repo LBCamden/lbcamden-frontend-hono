@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKSelect, {
-  type GovUKSelectProps,
-} from "govuk-frontend/dist/govuk/components/select/template.njk";
+import { GovUKSelect, type GovUKSelectProps } from "../upstream/govuk";
 import { HasEmbeddedContentArray } from "../types";
 import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
 

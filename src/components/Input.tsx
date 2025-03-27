@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKInput, {
-  type GovUKInputProps,
-} from "govuk-frontend/dist/govuk/components/input/template.njk";
+import { GovUKInput, type GovUKInputProps } from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface InputProps

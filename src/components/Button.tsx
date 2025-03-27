@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import LBCamdenButton, {
-  type LBCamdenButtonProps,
-} from "lbcamden-frontend/lbcamden/components/button/template.njk";
+import { LBCamdenButton, type LBCamdenButtonProps } from "../upstream/lbcamden";
 
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 

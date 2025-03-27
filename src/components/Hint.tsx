@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKHint, {
-  type GovUKHintProps,
-} from "govuk-frontend/dist/govuk/components/hint/template.njk";
+import { GovUKHint, type GovUKHintProps } from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface HintProps extends Omit<GovUKHintProps, "text" | "html"> {

@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKPhaseBanner, {
+import {
+  GovUKPhaseBanner,
   type GovUKPhaseBannerProps,
-} from "govuk-frontend/dist/govuk/components/phase-banner/template.njk";
+} from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface PhaseBannerProps

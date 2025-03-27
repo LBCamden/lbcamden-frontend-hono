@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKNotificationBanner, {
+import {
+  GovUKNotificationBanner,
   type GovUKNotificationBannerProps,
-} from "govuk-frontend/dist/govuk/components/notification-banner/template.njk";
+} from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface NotificationBannerProps

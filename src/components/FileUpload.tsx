@@ -1,6 +1,4 @@
-import GovUKFileUpload, {
-  type GovUKFileUploadProps,
-} from "govuk-frontend/dist/govuk/components/file-upload/template.njk";
+import { GovUKFileUpload, type GovUKFileUploadProps } from "../upstream/govuk";
 
 export interface FileUploadProps
   extends Omit<GovUKFileUploadProps, "formGroup"> {}

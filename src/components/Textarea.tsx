@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKTextarea, {
-  type GovUKTextareaProps,
-} from "govuk-frontend/dist/govuk/components/textarea/template.njk";
+import { GovUKTextarea, type GovUKTextareaProps } from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface TextareaProps

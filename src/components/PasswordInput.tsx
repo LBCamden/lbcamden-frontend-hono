@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKPasswordInput, {
+import {
+  GovUKPasswordInput,
   type GovUKPasswordInputProps,
-} from "govuk-frontend/dist/govuk/components/password-input/template.njk";
+} from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface PasswordInputProps

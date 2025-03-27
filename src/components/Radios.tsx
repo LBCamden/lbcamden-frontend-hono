@@ -1,7 +1,5 @@
 import { Child, JSXNode } from "hono/jsx";
-import GovUKRadios, {
-  type GovUKRadiosProps,
-} from "govuk-frontend/dist/govuk/components/radios/template.njk";
+import { GovUKRadios, type GovUKRadiosProps } from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface RadiosProps

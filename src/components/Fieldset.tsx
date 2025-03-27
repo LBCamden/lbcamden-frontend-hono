@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKFieldset, {
-  type GovUKFieldsetProps,
-} from "govuk-frontend/dist/govuk/components/fieldset/template.njk";
+import { GovUKFieldset, type GovUKFieldsetProps } from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK, renderTextOrHtml } from "../lib/hono-jsx-utils";
 
 export interface FieldsetProps

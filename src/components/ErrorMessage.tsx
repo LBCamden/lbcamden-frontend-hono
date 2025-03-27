@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKErrorMessage, {
+import {
+  GovUKErrorMessage,
   type GovUKErrorMessageProps,
-} from "govuk-frontend/dist/govuk/components/error-message/template.njk";
+} from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface ErrorMessageProps

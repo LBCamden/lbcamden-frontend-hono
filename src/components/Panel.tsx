@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKPanel, {
-  type GovUKPanelProps,
-} from "govuk-frontend/dist/govuk/components/panel/template.njk";
+import { GovUKPanel, type GovUKPanelProps } from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
 
 export interface PanelProps

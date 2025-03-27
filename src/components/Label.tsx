@@ -1,7 +1,5 @@
 import { Child } from "hono/jsx";
-import GovUKLabel, {
-  type GovUKLabelProps,
-} from "govuk-frontend/dist/govuk/components/label/template.njk";
+import { GovUKLabel, type GovUKLabelProps } from "../upstream/govuk";
 
 export interface LabelProps extends GovUKLabelProps {
   children?: Child;

@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKErrorSummary, {
+import {
+  GovUKErrorSummary,
   type GovUKErrorSummaryProps,
-} from "govuk-frontend/dist/govuk/components/error-summary/template.njk";
+} from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface ErrorSummaryProps

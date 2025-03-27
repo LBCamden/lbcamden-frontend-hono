@@ -1,7 +1,8 @@
 import { Child } from "hono/jsx";
-import GovUKCookieBanner, {
+import {
+  GovUKCookieBanner,
   type GovUKCookieBannerProps,
-} from "govuk-frontend/dist/govuk/components/cookie-banner/template.njk";
+} from "../upstream/govuk";
 import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface CookieBannerProps
