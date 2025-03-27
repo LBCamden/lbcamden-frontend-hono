@@ -1,4 +1,4 @@
-import { defineConfig, UserConfig } from "vite";
+import { defineConfig as honoDefineConfig, UserConfig } from "vite";
 import devServer, { defaultOptions, DevServerOptions } from '@hono/vite-dev-server'
 import { basename, extname, join } from "path";
 
@@ -16,8 +16,8 @@ interface ConfigWithFrontendOpts extends UserConfig {
   }
 }
 
-export function defineConfigWithFrontendBuild({ plugins = [], hono, client, ...conf }: ConfigWithFrontendOpts) {
-  return defineConfig((opts) => {
+export function defineConfig({ plugins = [], hono, client, ...conf }: ConfigWithFrontendOpts) {
+  return honoDefineConfig((opts) => {
     const { sourceDir, entrypoints, ...clientConf } = client
 
     if (opts.mode === "client") {

@@ -1,7 +1,7 @@
 {
-  "name": "lbcamden-frontend-hono-jsx",
+  "name": "lbcamden-frontend-hono",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "exports": {
     ".": {
@@ -15,15 +15,16 @@
   },
   "scripts": {
     "build": "vite build && tsc",
-    "codegen": "tsx bin/codegen.ts",
-    "scaffold": "tsx bin/scaffold.ts"
+    "codegen": "tsx bin/codegen.js",
+    "scaffold": "tsx bin/scaffold.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "peerDependencies": {
     "lbcamden-frontend": "^1.0.2",
-    "govuk-frontend": "^5.9.0"
+    "govuk-frontend": "^5.9.0",
+    "hono": "^4.7.5"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
