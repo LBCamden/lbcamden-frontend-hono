@@ -6,7 +6,8 @@ JSX components can be used server-side in [Hono](https://hono.dev/) projects. Th
 
 Typescript types are generated from upstream macro schemas.
 
-This is _experimental_. Expect missing components, potential bugs, inaccurate documentation and breaking changes.
+> [!WARNING]  
+> This is _experimental_. Expect missing components, potential bugs, inaccurate documentation and breaking changes.
 
 ## Getting started
 
