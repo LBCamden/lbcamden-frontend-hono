@@ -16,29 +16,38 @@
   "scripts": {
     "build": "vite build && tsc",
     "codegen": "tsx bin/codegen.js",
-    "scaffold": "tsx bin/scaffold.js"
+    "scaffold": "tsx bin/scaffold.js",
+    "storybook": "storybook dev -p 6006"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "peerDependencies": {
-    "lbcamden-frontend": "^1.0.2",
     "govuk-frontend": "^5.9.0",
-    "hono": "^4.7.5"
+    "hono": "^4.7.5",
+    "lbcamden-frontend": "^1.0.2"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
     "@hono/vite-dev-server": "^0.19.0",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/html": "^8.6.12",
+    "@storybook/html-vite": "^8.6.12",
+    "@storybook/test": "^8.6.12",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^22.13.13",
-    "lbcamden-frontend": "^1.0.2",
     "govuk-frontend": "^5.9.0",
     "hono": "^4.7.5",
+    "lbcamden-frontend": "^1.0.2",
+    "storybook": "^8.6.12",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "vite": "^6.2.3",
     "vite-plugin-nunjucks-loader": "github:lbcamden/vite-plugin-nunjucks-loader"
-  }
+  },
+  "packageManager": "pnpm@9.13.0+sha1.f149ab27b27e712ac9a58ce1717c307364ccdca8"
 }

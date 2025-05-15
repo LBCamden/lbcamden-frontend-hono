@@ -22,6 +22,131 @@ interface MacroOpt {
 
 const EXCLUDED_TYPES = ["nunjucks-block"]
 
+export async function scaffoldStories(conf: UpstreamOpts) {
+  for await (const { fixtures, component } of readComponents(conf)) {
+    const buf: string[] = []
+
+    const componentName = getComponentName(component, { ...conf, componentNamespace: '' })
+
+    const storiesOutPath = join(conf.outPath, componentName + '.stories.tsx')
+    if (existsSync(storiesOutPath)) continue
+
+    const componentImport = `./${componentName}`
+
+    buf.push(
+      `import { Meta, StoryObj } from "@storybook/html";\n`,
+      `import { ${componentName} } from ${JSON.stringify(componentImport)};\n`,
+      `import { renderHtmlStory } from "../lib/story-utils";\n\n`,
+
+      `type Story = StoryObj<typeof ${componentName}>;\n\n`,
+
+      `export default {\n`,
+      `  component: renderHtmlStory(${componentName}),\n`,
+      `} satisfies Meta<typeof ${componentName}>;\n\n`
+    )
+
+    for (const { name, options } of fixtures) {
+      const storyName = getComponentName(name, { componentNamespace: '' })
+      const args = toProps(options)
+
+      buf.push(`export const ${storyName}: Story = ${toJsxObject(JSON.stringify({ args }))};\n\n`)
+    }
+
+    await writeFile(storiesOutPath, buf.join(' '))
+  }
+
+  function toProps(object: any): any {
+    const res: any = {}
+
+    if (Array.isArray(object)) {
+      return object.map(toProps)
+    }
+
+    if (typeof object !== 'object' || !object) {
+      return object
+    }
+
+    for (const [k, v] of Object.entries(object)) {
+      if (v && typeof v === 'object' && Object.keys(v).length === 1) {
+        const [[innerK, innerV]] = Object.entries(v)
+
+        if (innerK === 'text' || innerK === 'html') {
+          res[k] = innerV
+          continue
+        }
+      }
+
+      if (k === 'text' || k === 'html') {
+        res.children = v
+        continue
+      }
+
+      if (k.endsWith('Text')) {
+        res[k.replace(/Text$/, '')] = v
+        continue
+      }
+
+      if (k.endsWith('Html')) {
+        res[k.replace(/Html$/, '')] = v
+        continue
+      }
+
+      res[k] = toProps(v)
+    }
+
+    return res
+  }
+
+  function toJsxObject(str: string) {
+    let i = 0
+    const current = () => str[i]
+    const next = () => str[i + 1]
+    const prev = () => str[i - 1]
+
+    let state: 'html' | 'init' = 'init'
+    const res: string[] = []
+
+    while (i < str.length) {
+      switch (state) {
+        case "init": {
+          if (current() === `"` && next() === '<') {
+            state = 'html'
+            break
+          }
+
+          res.push(current())
+          break
+        }
+        case "html": {
+          if (current() == `"` && prev() != "\\") {
+            state = "init"
+            break
+          }
+
+          if (current() == "\\" && next() == `"`) {
+            res.push('"')
+            i += 1
+            break
+          }
+
+          if (current() == "\\" && next() == `n`) {
+            res.push('\n')
+            i += 1
+            break
+          }
+
+          res.push(current())
+          break
+        }
+      }
+
+      ++i
+    }
+
+    return res.join('')
+  }
+}
+
 export async function scaffoldComponents(conf: UpstreamOpts) {
   for await (const { component } of readComponents(conf)) {
     const buf: string[] = []
@@ -56,6 +181,8 @@ export async function scaffoldComponents(conf: UpstreamOpts) {
 
     await writeFile(componentOutPath, buf.join(' '))
   }
+
+  await scaffoldStories(conf)
 }
 
 export async function genInterfaces(conf: UpstreamOpts) {
@@ -100,7 +227,10 @@ export async function* readComponents({ dir, only, exclude }: Pick<UpstreamOpts,
     const opts = await readFile(join(componentPath, 'macro-options.json'), 'utf-8')
       .then(JSON.parse)
 
-    yield { component: c, opts }
+    const { fixtures } = await readFile(join(componentPath, 'fixtures.json'), 'utf-8')
+      .then(JSON.parse)
+
+    yield { component: c, opts, fixtures }
   }
 
   return res

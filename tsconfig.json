@@ -9,9 +9,11 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
+    "lib": ["DOM", "DOM.AsyncIterable"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "emitDeclarationOnly": true,
     "declaration": true
-  }
+  },
+  "include": ["src"]
 }

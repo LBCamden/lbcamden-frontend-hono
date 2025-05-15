@@ -1,11 +1,11 @@
-import { scaffoldComponents } from "../src/lib/upstream-utils";
+import { scaffoldComponents, scaffoldStories } from "../src/lib/upstream-utils";
 
 scaffoldComponents({
   dir: "node_modules/lbcamden-frontend/lbcamden/components",
   importSourcePrefix: "lbcamden-frontend/lbcamden/components",
   componentNamespace: "LBCamden",
   outPath: "src/components",
-  only: ["button", "header", "footer"],
+  only: ["button"],
 });
 
 scaffoldComponents({
@@ -13,5 +13,5 @@ scaffoldComponents({
   importSourcePrefix: "govuk-frontend/dist/govuk/components",
   componentNamespace: "GovUK",
   outPath: "src/components",
-  only: [],
+  // only: ["accordion"],
 });

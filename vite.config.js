@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import nunjucksLoader from "vite-plugin-nunjucks-loader";
-import { dts } from "rollup-plugin-dts";
 
 export default defineConfig({
   define: {
