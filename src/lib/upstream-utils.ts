@@ -161,7 +161,7 @@ export async function scaffoldComponents(conf: UpstreamOpts) {
     if (existsSync(componentOutPath)) continue
 
     buf.push('import { Child } from "hono/jsx";\n')
-    buf.push('import', upstreamComponentName, ', { type', upstreamComponentPropsName, '} from', JSON.stringify(moduleName), '\n')
+    buf.push('import { ', upstreamComponentName, ', type', upstreamComponentPropsName, '} from "../upstream"\n')
 
     buf.push('\n')
     buf.push('\n')
@@ -171,7 +171,7 @@ export async function scaffoldComponents(conf: UpstreamOpts) {
     buf.push('\n')
     buf.push('\n')
 
-    buf.push('export default function', componentName, '(', 'props:', componentPropsName, ')')
+    buf.push('export function', componentName, '(', 'props:', componentPropsName, ')')
 
     buf.push('{\n')
     buf.push('return', `<${upstreamComponentName} {...props} />`)

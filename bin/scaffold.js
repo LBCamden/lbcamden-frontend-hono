@@ -1,11 +1,14 @@
-import { scaffoldComponents, scaffoldStories } from "../src/lib/upstream-utils";
+import { scaffoldComponents } from "../src/lib/upstream-utils";
+
+const { lbcamden, govuk } = getOpts();
 
 scaffoldComponents({
   dir: "node_modules/lbcamden-frontend/lbcamden/components",
   importSourcePrefix: "lbcamden-frontend/lbcamden/components",
   componentNamespace: "LBCamden",
   outPath: "src/components",
-  only: ["button"],
+  only: [],
+  ...lbcamden,
 });
 
 scaffoldComponents({
@@ -13,5 +16,26 @@ scaffoldComponents({
   importSourcePrefix: "govuk-frontend/dist/govuk/components",
   componentNamespace: "GovUK",
   outPath: "src/components",
-  // only: ["accordion"],
+  ...govuk,
 });
+
+function getOpts() {
+  const [arg] = process.argv.slice(2);
+
+  console.log(process.argv);
+
+  if (arg === "--all") {
+    return {};
+  }
+
+  const [lib, component] = arg?.split("/") ?? [];
+  if (!lib || !component) {
+    throw Error(
+      `Invalid argument. Either pass the name of a component eg: lbcamden/button or --all.`
+    );
+  }
+
+  return {
+    [lib]: { only: [component] },
+  };
+}

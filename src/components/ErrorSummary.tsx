@@ -23,6 +23,9 @@ interface ErrorSummaryItem {
   /** Text for the error link item. */
   content: Child;
 
+  /** Href link for the error item. */
+  href?: string;
+
   /** HTML attributes (for example data attributes) to add to the error link anchor. */
   attributes?: Record<string, unknown>;
 }

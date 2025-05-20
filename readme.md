@@ -9,6 +9,11 @@ Typescript types are generated from upstream macro schemas.
 > [!WARNING]  
 > This is _experimental_. Expect missing components, potential bugs, inaccurate documentation and breaking changes.
 
+See also:
+
+- [Developer Workflow](/docs/development-workflow.md)
+- [Motivation and Context](/docs/motivation-and-context.md)
+
 ## Getting started
 
 This library depends on hono, lbcamden-frontend v1 and govuk-frontend v5.
