@@ -13,8 +13,8 @@ export const Default: Story = {
     name: "example-default",
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -27,8 +27,8 @@ export const Inline: Story = {
     fieldset: { legend: "Have you changed your name?" },
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No", checked: true },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No", checked: true },
     ],
   },
 };
@@ -39,7 +39,7 @@ export const WithDisabled: Story = {
     name: "gov",
     fieldset: {
       legend: {
-        children: "How do you want to sign in?",
+        content: "How do you want to sign in?",
         classes: "govuk-fieldset__legend--l",
         isPageHeading: true,
       },
@@ -47,13 +47,13 @@ export const WithDisabled: Story = {
     items: [
       {
         value: "gateway",
-        children: "Sign in with Government Gateway",
+        content: "Sign in with Government Gateway",
         id: "gateway",
         hint: "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.",
       },
       {
         value: "verify",
-        children: "Sign in with GOV.UK Verify",
+        content: "Sign in with GOV.UK Verify",
         id: "verify",
         hint: "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.",
         disabled: true,
@@ -68,8 +68,7 @@ export const WithLegendAsPageHeading: Story = {
     name: "housing-act",
     fieldset: {
       legend: {
-        children:
-          "Which part of the Housing Act was your licence issued under?",
+        content: "Which part of the Housing Act was your licence issued under?",
         classes: "govuk-fieldset__legend--l",
         isPageHeading: true,
       },
@@ -78,7 +77,7 @@ export const WithLegendAsPageHeading: Story = {
     items: [
       {
         value: "part-2",
-        children: (
+        content: (
           <>
             <span class="govuk-heading-s govuk-!-margin-bottom-1">
               Part 2 of the Housing Act 2004
@@ -90,7 +89,7 @@ export const WithLegendAsPageHeading: Story = {
       },
       {
         value: "part-3",
-        children: (
+        content: (
           <>
             <span class="govuk-heading-s govuk-!-margin-bottom-1">
               Part 3 of the Housing Act 2004
@@ -110,8 +109,7 @@ export const WithAMediumLegend: Story = {
     name: "housing-act",
     fieldset: {
       legend: {
-        children:
-          "Which part of the Housing Act was your licence issued under?",
+        content: "Which part of the Housing Act was your licence issued under?",
         classes: "govuk-fieldset__legend--m",
       },
     },
@@ -119,7 +117,7 @@ export const WithAMediumLegend: Story = {
     items: [
       {
         value: "part-2",
-        children: (
+        content: (
           <>
             <span class="govuk-heading-s govuk-!-margin-bottom-1">
               Part 2 of the Housing Act 2004
@@ -131,7 +129,7 @@ export const WithAMediumLegend: Story = {
       },
       {
         value: "part-3",
-        children: (
+        content: (
           <>
             <span class="govuk-heading-s govuk-!-margin-bottom-1">
               Part 3 of the Housing Act 2004
@@ -151,10 +149,10 @@ export const WithADivider: Story = {
     name: "example",
     fieldset: { legend: "How do you want to sign in?" },
     items: [
-      { value: "government-gateway", children: "Use Government Gateway" },
-      { value: "govuk-verify", children: "Use GOV.UK Verify" },
+      { value: "government-gateway", content: "Use Government Gateway" },
+      { value: "govuk-verify", content: "Use GOV.UK Verify" },
       { divider: "or" },
-      { value: "create-account", children: "Create an account" },
+      { value: "create-account", content: "Create an account" },
     ],
   },
 };
@@ -165,7 +163,7 @@ export const WithHintsOnItems: Story = {
     name: "gov",
     fieldset: {
       legend: {
-        children: "How do you want to sign in?",
+        content: "How do you want to sign in?",
         classes: "govuk-fieldset__legend--l",
         isPageHeading: true,
       },
@@ -173,13 +171,13 @@ export const WithHintsOnItems: Story = {
     items: [
       {
         value: "gateway",
-        children: "Sign in with Government Gateway",
+        content: "Sign in with Government Gateway",
         id: "gateway",
         hint: "You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before.",
       },
       {
         value: "verify",
-        children: "Sign in with GOV.UK Verify",
+        content: "Sign in with GOV.UK Verify",
         id: "verify",
         hint: "You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.",
       },
@@ -191,9 +189,9 @@ export const WithoutFieldset: Story = {
   args: {
     name: "colours",
     items: [
-      { value: "red", children: "Red" },
-      { value: "green", children: "Green" },
-      { value: "blue", children: "Blue" },
+      { value: "red", content: "Red" },
+      { value: "green", content: "Green" },
+      { value: "blue", content: "Blue" },
     ],
   },
 };
@@ -205,8 +203,8 @@ export const WithFieldsetAndErrorMessage: Story = {
     errorMessage: "Please select an option",
     fieldset: { legend: "Have you changed your name?" },
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No", checked: true },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No", checked: true },
     ],
   },
 };
@@ -220,17 +218,17 @@ export const WithVeryLongOptionText: Story = {
     items: [
       {
         value: "nullam",
-        children:
+        content:
           "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus.",
       },
       {
         value: "aenean",
-        children:
+        content:
           "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum.",
       },
       {
         value: "fusce",
-        children:
+        content:
           "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Sed posuere consectetur est at lobortis.",
       },
     ],
@@ -245,7 +243,7 @@ export const WithConditionalItems: Story = {
     items: [
       {
         value: "email",
-        children: "Email",
+        content: "Email",
         conditional: (
           <>
             <label class="govuk-label" for="context-email">
@@ -262,7 +260,7 @@ export const WithConditionalItems: Story = {
       },
       {
         value: "phone",
-        children: "Phone",
+        content: "Phone",
         conditional: (
           <>
             <label class="govuk-label" for="contact-phone">
@@ -279,7 +277,7 @@ export const WithConditionalItems: Story = {
       },
       {
         value: "text",
-        children: "Text message",
+        content: "Text message",
         conditional: (
           <>
             <label class="govuk-label" for="contact-text-message">
@@ -306,7 +304,7 @@ export const WithConditionalItemsWithSpecialCharacters: Story = {
     items: [
       {
         value: "email",
-        children: "Email",
+        content: "Email",
         conditional: (
           <>
             <label class="govuk-label" for="context-email">
@@ -323,7 +321,7 @@ export const WithConditionalItemsWithSpecialCharacters: Story = {
       },
       {
         value: "phone",
-        children: "Phone",
+        content: "Phone",
         conditional: (
           <>
             <label class="govuk-label" for="contact-phone">
@@ -340,7 +338,7 @@ export const WithConditionalItemsWithSpecialCharacters: Story = {
       },
       {
         value: "text",
-        children: "Text message",
+        content: "Text message",
         conditional: (
           <>
             <label class="govuk-label" for="contact-text-message">
@@ -367,7 +365,7 @@ export const WithConditionalItemChecked: Story = {
     items: [
       {
         value: "email",
-        children: "Email",
+        content: "Email",
         checked: true,
         conditional: (
           <>
@@ -385,7 +383,7 @@ export const WithConditionalItemChecked: Story = {
       },
       {
         value: "phone",
-        children: "Phone",
+        content: "Phone",
         conditional: (
           <>
             <label class="govuk-label" for="contact-phone">
@@ -402,7 +400,7 @@ export const WithConditionalItemChecked: Story = {
       },
       {
         value: "text",
-        children: "Text message",
+        content: "Text message",
         conditional: (
           <>
             <label class="govuk-label" for="contact-text-message">
@@ -426,8 +424,8 @@ export const Prechecked: Story = {
     name: "example-default",
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No", checked: true },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No", checked: true },
     ],
   },
 };
@@ -436,8 +434,8 @@ export const PrecheckedUsingValue: Story = {
   args: {
     name: "example-default",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
     value: "no",
   },
@@ -451,7 +449,7 @@ export const WithConditionalItemsAndPreCheckedValue: Story = {
     items: [
       {
         value: "email",
-        children: "Email",
+        content: "Email",
         conditional: (
           <>
             <label class="govuk-label" for="context-email">
@@ -468,7 +466,7 @@ export const WithConditionalItemsAndPreCheckedValue: Story = {
       },
       {
         value: "phone",
-        children: "Phone",
+        content: "Phone",
         conditional: (
           <>
             <label class="govuk-label" for="contact-phone">
@@ -485,7 +483,7 @@ export const WithConditionalItemsAndPreCheckedValue: Story = {
       },
       {
         value: "text",
-        children: "Text message",
+        content: "Text message",
         conditional: (
           <>
             <label class="govuk-label" for="contact-text-message">
@@ -514,7 +512,7 @@ export const WithOptionalFormGroupClassesShowingGroupError: Story = {
     items: [
       {
         value: "email",
-        children: "Email",
+        content: "Email",
         conditional: (
           <>
             <label class="govuk-label" for="context-email">
@@ -531,7 +529,7 @@ export const WithOptionalFormGroupClassesShowingGroupError: Story = {
       },
       {
         value: "phone",
-        children: "Phone",
+        content: "Phone",
         checked: true,
         conditional: (
           <>
@@ -553,7 +551,7 @@ export const WithOptionalFormGroupClassesShowingGroupError: Story = {
       },
       {
         value: "text",
-        children: "Text message",
+        content: "Text message",
         conditional: (
           <>
             <label class="govuk-label" for="contact-text-message">
@@ -579,9 +577,9 @@ export const Small: Story = {
     formGroup: { classes: "govuk-radios--small" },
     fieldset: { legend: "How do you want to be contacted?" },
     items: [
-      { value: "email", children: "Email" },
-      { value: "phone", children: "Phone" },
-      { value: "text", children: "Text message" },
+      { value: "email", content: "Email" },
+      { value: "phone", content: "Phone" },
+      { value: "text", content: "Text message" },
     ],
   },
 };
@@ -595,17 +593,17 @@ export const SmallWithLongText: Story = {
     items: [
       {
         value: "nullam",
-        children:
+        content:
           "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus.",
       },
       {
         value: "aenean",
-        children:
+        content:
           "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis consectetur purus sit amet fermentum.",
       },
       {
         value: "fusce",
-        children:
+        content:
           "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Sed posuere consectetur est at lobortis.",
       },
     ],
@@ -620,9 +618,9 @@ export const SmallWithError: Story = {
     fieldset: { legend: "How do you want to be contacted?" },
     errorMessage: "Select a thing",
     items: [
-      { value: "email", children: "Email" },
-      { value: "phone", children: "Phone" },
-      { value: "text", children: "Text message" },
+      { value: "email", content: "Email" },
+      { value: "phone", content: "Phone" },
+      { value: "text", content: "Text message" },
     ],
   },
 };
@@ -634,9 +632,9 @@ export const SmallWithHint: Story = {
     formGroup: { classes: "govuk-radios--small" },
     fieldset: { legend: "How do you want to be contacted?" },
     items: [
-      { value: "email", children: "Email", hint: "Hint for email address" },
-      { value: "phone", children: "Phone" },
-      { value: "text", children: "Text message" },
+      { value: "email", content: "Email", hint: "Hint for email address" },
+      { value: "phone", content: "Phone" },
+      { value: "text", content: "Text message" },
     ],
   },
 };
@@ -648,9 +646,9 @@ export const SmallWithDisabled: Story = {
     formGroup: { classes: "govuk-radios--small" },
     fieldset: { legend: "How do you want to be contacted?" },
     items: [
-      { value: "email", children: "Email" },
-      { value: "phone", children: "Phone" },
-      { value: "text", children: "Text message", disabled: true },
+      { value: "email", content: "Email" },
+      { value: "phone", content: "Phone" },
+      { value: "text", content: "Text message", disabled: true },
     ],
   },
 };
@@ -664,7 +662,7 @@ export const SmallWithConditionalReveal: Story = {
     items: [
       {
         value: "email",
-        children: "Email",
+        content: "Email",
         conditional: (
           <>
             <label class="govuk-label" for="context-email">
@@ -679,8 +677,8 @@ export const SmallWithConditionalReveal: Story = {
           </>
         ),
       },
-      { value: "phone", children: "Phone" },
-      { value: "text", children: "Text message" },
+      { value: "phone", content: "Phone" },
+      { value: "text", content: "Text message" },
     ],
   },
 };
@@ -692,9 +690,9 @@ export const SmallInline: Story = {
     name: "example",
     fieldset: { legend: "Sort by" },
     items: [
-      { value: "relevance", children: "relevance" },
-      { value: "title", children: "title" },
-      { value: "created", children: "created" },
+      { value: "relevance", content: "relevance" },
+      { value: "title", content: "title" },
+      { value: "created", content: "created" },
     ],
   },
 };
@@ -706,16 +704,16 @@ export const SmallInlineExtreme: Story = {
     name: "example",
     fieldset: { legend: "Sort by" },
     items: [
-      { value: "relevance", children: "relevance" },
-      { value: "title", children: "title" },
-      { value: "created", children: "created" },
-      { value: "modified", children: "modified" },
-      { value: "category", children: "category" },
-      { value: "votes", children: "votes" },
-      { value: "flavour", children: "flavour" },
-      { value: "hue", children: "hue" },
-      { value: "happiness", children: "happiness" },
-      { value: "funkiness", children: "funkiness" },
+      { value: "relevance", content: "relevance" },
+      { value: "title", content: "title" },
+      { value: "created", content: "created" },
+      { value: "modified", content: "modified" },
+      { value: "category", content: "category" },
+      { value: "votes", content: "votes" },
+      { value: "flavour", content: "flavour" },
+      { value: "hue", content: "hue" },
+      { value: "happiness", content: "happiness" },
+      { value: "funkiness", content: "funkiness" },
     ],
   },
 };
@@ -727,10 +725,10 @@ export const SmallWithADivider: Story = {
     fieldset: { legend: "How do you want to sign in?" },
     classes: "govuk-radios--small",
     items: [
-      { value: "government-gateway", children: "Use Government Gateway" },
-      { value: "govuk-verify", children: "Use GOV.UK Verify" },
+      { value: "government-gateway", content: "Use Government Gateway" },
+      { value: "govuk-verify", content: "Use GOV.UK Verify" },
       { divider: "or" },
-      { value: "create-account", children: "Create an account" },
+      { value: "create-account", content: "Create an account" },
     ],
   },
 };
@@ -740,8 +738,8 @@ export const WithIdPrefix: Story = {
     name: "example-radio",
     idPrefix: "example-id-prefix",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -750,8 +748,8 @@ export const MinimalItemsAndName: Story = {
   args: {
     name: "example-name",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -760,10 +758,10 @@ export const WithFalsyItems: Story = {
   args: {
     name: "example-name",
     items: [
-      { value: "yes", children: "Yes" },
+      { value: "yes", content: "Yes" },
       null,
       false,
-      { value: "no", children: "No" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -773,8 +771,8 @@ export const FieldsetWithDescribedBy: Story = {
     name: "example-name",
     fieldset: { describedBy: "test-target-element", legend: "Which option?" },
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -787,8 +785,8 @@ export const Attributes: Story = {
       "data-second-attribute": "second-value",
     },
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -799,12 +797,12 @@ export const ItemsWithAttributes: Story = {
     items: [
       {
         value: "yes",
-        children: "Yes",
+        content: "Yes",
         attributes: { "data-attribute": "ABC", "data-second-attribute": "DEF" },
       },
       {
         value: "no",
-        children: "No",
+        content: "No",
         attributes: { "data-attribute": "GHI", "data-second-attribute": "JKL" },
       },
     ],
@@ -815,8 +813,8 @@ export const WithEmptyConditional: Story = {
   args: {
     name: "example-conditional",
     items: [
-      { value: "yes", children: "Yes", conditional: false },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes", conditional: false },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -824,7 +822,7 @@ export const WithEmptyConditional: Story = {
 export const LabelWithClasses: Story = {
   args: {
     name: "example-label-classes",
-    items: [{ value: "yes", children: "Yes", label: { classes: "bold" } }],
+    items: [{ value: "yes", content: "Yes", label: { classes: "bold" } }],
   },
 };
 
@@ -834,8 +832,8 @@ export const WithHintsOnParentAndItems: Story = {
     fieldset: { legend: "Have you changed your name?" },
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes", hint: "Hint for yes option here" },
-      { value: "no", children: "No", hint: "Hint for no option here" },
+      { value: "yes", content: "Yes", hint: "Hint for yes option here" },
+      { value: "no", content: "No", hint: "Hint for no option here" },
     ],
   },
 };
@@ -849,8 +847,8 @@ export const WithDescribedByAndHint: Story = {
     },
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -860,8 +858,8 @@ export const WithErrorMessage: Story = {
     name: "example-error-message",
     errorMessage: "Please select an option",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -872,8 +870,8 @@ export const WithErrorMessageAndIdPrefix: Story = {
     idPrefix: "id-prefix",
     errorMessage: "Please select an option",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -885,8 +883,8 @@ export const WithHintAndErrorMessage: Story = {
     fieldset: { legend: "Have you changed your name?" },
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -901,8 +899,8 @@ export const WithHintErrorMessageAndDescribedBy: Story = {
     },
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -913,7 +911,7 @@ export const LabelWithAttributes: Story = {
     items: [
       {
         value: "yes",
-        children: "Yes",
+        content: "Yes",
         label: {
           attributes: {
             "data-attribute": "value",
@@ -938,8 +936,8 @@ export const FieldsetParams: Story = {
     },
     hint: "This includes changing your last name or spelling your name differently.",
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -949,8 +947,8 @@ export const FieldsetWithHtml: Story = {
     name: "with-fieldset-html",
     fieldset: { legend: "Have <b>you</b> changed your name?" },
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No" },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No" },
     ],
   },
 };
@@ -965,8 +963,8 @@ export const WithFieldsetErrorMessageAndDescribedBy: Story = {
       legend: "Have you changed your name?",
     },
     items: [
-      { value: "yes", children: "Yes" },
-      { value: "no", children: "No", checked: true },
+      { value: "yes", content: "Yes" },
+      { value: "no", content: "No", checked: true },
     ],
   },
 };
@@ -975,9 +973,9 @@ export const ItemCheckedOverridesValue: Story = {
   args: {
     name: "colors",
     items: [
-      { value: "red", children: "Red" },
-      { value: "green", children: "Green", checked: false },
-      { value: "blue", children: "Blue" },
+      { value: "red", content: "Red" },
+      { value: "green", content: "Green", checked: false },
+      { value: "blue", content: "Blue" },
     ],
     value: "green",
   },
@@ -989,7 +987,7 @@ export const TextareaInConditional: Story = {
     items: [
       {
         value: "other",
-        children: "Other",
+        content: "Other",
         conditional: (
           <>
             <label class="govuk-label" for="conditional-textarea">

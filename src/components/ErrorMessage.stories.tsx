@@ -35,7 +35,13 @@ export const Classes: Story = {
 export const HtmlAsText: Story = { args: { children: "Unexpected > in body" } };
 
 export const Html: Story = {
-  args: { children: "Unexpected <b>bold text</b> in body copy" },
+  args: {
+    children: (
+      <>
+        Unexpected <b>bold text</b> in body copy
+      </>
+    ),
+  },
 };
 
 export const Attributes: Story = {

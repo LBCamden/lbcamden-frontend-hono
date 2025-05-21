@@ -99,7 +99,11 @@ export const HtmlAsDescriptionText: Story = {
 export const DescriptionHtml: Story = {
   args: {
     title: "There is a problem",
-    description: "See <span>errors</span> below",
+    description: (
+      <>
+        See <span>errors</span> below
+      </>
+    ),
     errorList: [{ content: "Invalid username or password" }],
   },
 };

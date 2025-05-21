@@ -13,22 +13,22 @@ export const Default: Story = {
     messages: [
       {
         heading: "Cookies on this government service",
-        children:
+        content:
           "We use analytics cookies to help understand how users use our service.",
         actions: [
           {
-            children: "Accept analytics cookies",
+            content: "Accept analytics cookies",
             type: "submit",
             name: "cookies",
             value: "accept",
           },
           {
-            children: "Reject analytics cookies",
+            content: "Reject analytics cookies",
             type: "submit",
             name: "cookies",
             value: "reject",
           },
-          { children: "View cookie preferences", href: "/cookie-preferences" },
+          { content: "View cookie preferences", href: "/cookie-preferences" },
         ],
       },
     ],
@@ -39,10 +39,10 @@ export const AcceptedConfirmationBanner: Story = {
   args: {
     messages: [
       {
-        children:
+        content:
           "Your cookie preferences have been saved. You have accepted cookies.",
         role: "alert",
-        actions: [{ children: "Hide cookie message", type: "button" }],
+        actions: [{ content: "Hide cookie message", type: "button" }],
       },
     ],
   },
@@ -52,10 +52,10 @@ export const RejectedConfirmationBanner: Story = {
   args: {
     messages: [
       {
-        children:
+        content:
           "Your cookie preferences have been saved. You have rejected cookies.",
         role: "alert",
-        actions: [{ children: "Hide cookie message", type: "button" }],
+        actions: [{ content: "Hide cookie message", type: "button" }],
       },
     ],
   },
@@ -66,37 +66,36 @@ export const ClientSideImplementation: Story = {
     messages: [
       {
         heading: "Cookies on this service",
-        children:
-          "We use cookies to help understand how users use our service.",
+        content: "We use cookies to help understand how users use our service.",
         actions: [
           {
-            children: "Accept analytics cookies",
+            content: "Accept analytics cookies",
             type: "submit",
             name: "cookies",
             value: "accept",
           },
           {
-            children: "Reject analytics cookies",
+            content: "Reject analytics cookies",
             type: "submit",
             name: "cookies",
             value: "reject",
           },
-          { children: "View cookie preferences", href: "/cookie-preferences" },
+          { content: "View cookie preferences", href: "/cookie-preferences" },
         ],
       },
       {
-        children:
+        content:
           "Your cookie preferences have been saved. You have accepted cookies.",
         role: "alert",
         hidden: true,
-        actions: [{ children: "Hide cookie message", type: "button" }],
+        actions: [{ content: "Hide cookie message", type: "button" }],
       },
       {
-        children:
+        content:
           "Your cookie preferences have been saved. You have rejected cookies.",
         role: "alert",
         hidden: true,
-        actions: [{ children: "Hide cookie message", type: "button" }],
+        actions: [{ content: "Hide cookie message", type: "button" }],
       },
     ],
   },
@@ -107,7 +106,7 @@ export const WithHtml: Story = {
     messages: [
       {
         heading: "Cookies on <span>my service</span>",
-        children: (
+        content: (
           <>
             <p class="govuk-body">
               We use cookies in <span>our service</span>.
@@ -120,18 +119,18 @@ export const WithHtml: Story = {
         ),
         actions: [
           {
-            children: "Accept analytics cookies",
+            content: "Accept analytics cookies",
             type: "submit",
             name: "cookies",
             value: "accept",
           },
           {
-            children: "Reject analytics cookies",
+            content: "Reject analytics cookies",
             type: "submit",
             name: "cookies",
             value: "reject",
           },
-          { children: "View cookie preferences", href: "/cookie-preferences" },
+          { content: "View cookie preferences", href: "/cookie-preferences" },
         ],
       },
     ],
@@ -139,7 +138,17 @@ export const WithHtml: Story = {
 };
 
 export const HeadingHtml: Story = {
-  args: { messages: [{ heading: "Cookies on <span>my service</span>" }] },
+  args: {
+    messages: [
+      {
+        heading: (
+          <>
+            Cookies on <span>my service</span>
+          </>
+        ),
+      },
+    ],
+  },
 };
 
 export const HeadingHtmlAsText: Story = {
@@ -150,7 +159,7 @@ export const Html: Story = {
   args: {
     messages: [
       {
-        children: (
+        content: (
           <p class="govuk-body">
             We use cookies in <span>our service</span>.
           </p>
@@ -171,7 +180,7 @@ export const Attributes: Story = {
 export const CustomAriaLabel: Story = {
   args: {
     ariaLabel: "Cookies on GOV.UK",
-    messages: [{ children: "We use cookies on GOV.UK" }],
+    messages: [{ content: "We use cookies on GOV.UK" }],
   },
 };
 
@@ -180,12 +189,12 @@ export const Hidden: Story = { args: { messages: [{ hidden: true }] } };
 export const HiddenFalse: Story = { args: { messages: [{ hidden: false }] } };
 
 export const DefaultAction: Story = {
-  args: { messages: [{ actions: [{ children: "This is a button" }] }] },
+  args: { messages: [{ actions: [{ content: "This is a button" }] }] },
 };
 
 export const Link: Story = {
   args: {
-    messages: [{ actions: [{ children: "This is a link", href: "/link" }] }],
+    messages: [{ actions: [{ content: "This is a link", href: "/link" }] }],
   },
 };
 
@@ -195,7 +204,7 @@ export const LinkWithFalseButtonOptions: Story = {
       {
         actions: [
           {
-            children: "This is a link",
+            content: "This is a link",
             href: "/link",
             value: "cookies",
             name: "link",
@@ -210,16 +219,14 @@ export const LinkAsAButton: Story = {
   args: {
     messages: [
       {
-        actions: [
-          { children: "This is a link", href: "/link", type: "button" },
-        ],
+        actions: [{ content: "This is a link", href: "/link", type: "button" }],
       },
     ],
   },
 };
 
 export const Type: Story = {
-  args: { messages: [{ actions: [{ children: "Button", type: "button" }] }] },
+  args: { messages: [{ actions: [{ content: "Button", type: "button" }] }] },
 };
 
 export const ButtonClasses: Story = {
@@ -228,7 +235,7 @@ export const ButtonClasses: Story = {
       {
         actions: [
           {
-            children: "Button with custom classes",
+            content: "Button with custom classes",
             classes: "my-button-class app-button-class",
           },
         ],
@@ -243,7 +250,7 @@ export const ButtonAttributes: Story = {
       {
         actions: [
           {
-            children: "Button with attributes",
+            content: "Button with attributes",
             attributes: { "data-button-attribute": "my-value" },
           },
         ],
@@ -258,7 +265,7 @@ export const LinkClasses: Story = {
       {
         actions: [
           {
-            children: "Link with custom classes",
+            content: "Link with custom classes",
             href: "/my-link",
             classes: "my-link-class app-link-class",
           },
@@ -274,7 +281,7 @@ export const LinkAttributes: Story = {
       {
         actions: [
           {
-            children: "Link with attributes",
+            content: "Link with attributes",
             href: "/link",
             attributes: { "data-link-attribute": "my-value" },
           },
@@ -292,35 +299,34 @@ export const FullBannerHidden: Story = {
     messages: [
       {
         heading: "Cookies on this service",
-        children:
-          "We use cookies to help understand how users use our service.",
+        content: "We use cookies to help understand how users use our service.",
         actions: [
           {
-            children: "Accept analytics cookies",
+            content: "Accept analytics cookies",
             type: "submit",
             name: "cookies",
             value: "accept",
           },
           {
-            children: "Reject analytics cookies",
+            content: "Reject analytics cookies",
             type: "submit",
             name: "cookies",
             value: "reject",
           },
-          { children: "View cookie preferences", href: "/cookie-preferences" },
+          { content: "View cookie preferences", href: "/cookie-preferences" },
         ],
       },
       {
-        children:
+        content:
           "Your cookie preferences have been saved. You have accepted cookies.",
         role: "alert",
-        actions: [{ children: "Hide cookie message", type: "button" }],
+        actions: [{ content: "Hide cookie message", type: "button" }],
       },
       {
-        children:
+        content:
           "Your cookie preferences have been saved. You have rejected cookies.",
         role: "alert",
-        actions: [{ children: "Hide cookie message", type: "button" }],
+        actions: [{ content: "Hide cookie message", type: "button" }],
       },
     ],
   },

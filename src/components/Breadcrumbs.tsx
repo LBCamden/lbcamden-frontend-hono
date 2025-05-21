@@ -3,7 +3,7 @@ import {
   GovUKBreadcrumbs,
   type GovUKBreadcrumbsProps,
 } from "../upstream/govuk";
-import { mapAsync, renderChildFragment } from "../lib/hono-jsx-utils";
+import { mapAsync, normaliseContentObject } from "../lib/hono-jsx-utils";
 
 export interface BreadcrumbsProps extends Omit<GovUKBreadcrumbsProps, "items"> {
   items: BreadcrumbItem[];
@@ -20,10 +20,10 @@ export interface BreadcrumbItem {
 }
 
 export async function Breadcrumbs({ items, ...props }: BreadcrumbsProps) {
-  const govukItems = await mapAsync(items, async ({ content, ...rest }) => ({
-    ...(await renderChildFragment(content)),
-    ...rest,
-  }));
-
-  return <GovUKBreadcrumbs items={govukItems} {...props} />;
+  return (
+    <GovUKBreadcrumbs
+      items={await mapAsync(items, normaliseContentObject)}
+      {...props}
+    />
+  );
 }

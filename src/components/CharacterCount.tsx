@@ -6,10 +6,22 @@ import {
 import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface CharacterCountProps
-  extends Omit<GovUKCharacterCountProps, "label" | "hint" | "formGroup"> {
+  extends Omit<
+    GovUKCharacterCountProps,
+    | "label"
+    | "hint"
+    | "formGroup"
+    | "textareaDescriptionText"
+    | "textareaDescriptionHtml"
+    | "errorMessage"
+  > {
   label?: Child;
   hint?: Child;
   formGroup?: CharacterCountFormGroup;
+  textareaDescription?: Child;
+
+  /** Can be used to add an error message to the character count component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. **/
+  errorMessage?: Child;
 }
 
 export interface CharacterCountFormGroup {
@@ -35,6 +47,11 @@ export async function CharacterCount(props: CharacterCountProps) {
       {...props}
       label={label}
       hint={hint}
+      {...await renderChildFragment(props.textareaDescription, {
+        html: "textareaDescriptionHtml",
+        text: "textareaDescriptionText",
+      })}
+      errorMessage={await renderChildFragment(props.errorMessage)}
       formGroup={{
         ...props.formGroup,
         beforeInput: await renderChildFragment(props.formGroup?.beforeInput),

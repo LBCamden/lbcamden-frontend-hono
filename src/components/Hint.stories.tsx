@@ -17,8 +17,15 @@ export const Default: Story = {
 
 export const WithHtml: Story = {
   args: {
-    children:
-      'It\'s on your National Insurance card, benefit letter, payslip or <a class="govuk-link" href="#">P60</a>.\nFor example, \'QQ 12 34 56 C\'.\n',
+    children: (
+      <>
+        It's on your National Insurance card, benefit letter, payslip or{" "}
+        <a class="govuk-link" href="#">
+          P60
+        </a>
+        . For example, 'QQ 12 34 56 C'
+      </>
+    ),
   },
 };
 

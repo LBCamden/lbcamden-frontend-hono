@@ -22,7 +22,7 @@ export const Classes: Story = {
   args: { classes: "app-back-link--custom-class" },
 };
 
-export const HtmlAsText: Story = { args: { children: <b>Home</b> } };
+export const HtmlAsText: Story = { args: { children: "<b>Home</b>" } };
 
 export const Html: Story = { args: { children: <b>Back</b> } };
 

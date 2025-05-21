@@ -118,8 +118,8 @@ export const ItemAttributes: Story = {
 export const HtmlAsText: Story = {
   args: {
     items: [
-      { content: <span>Section 1</span>, href: "/section-1" },
-      { content: <span>Section 2</span> },
+      { content: "<span>Section 1</span>", href: "/section-1" },
+      { content: "<span>Section 2</span>" },
     ],
   },
 };

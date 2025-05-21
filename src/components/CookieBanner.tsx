@@ -23,7 +23,7 @@ interface CookieBannerMessage {
 
 interface CookieBannerAction {
   /** The button or link text. **/
-  text: string;
+  content: Child;
 
   /** The type of button – `"button"` or `"submit"`. If `href` is provided, set `type` to `"button"` render a link styled as a button. **/
   type?: string;
@@ -45,16 +45,24 @@ interface CookieBannerAction {
 }
 
 export async function CookieBanner(props: CookieBannerProps) {
-  const govukMessages = await mapAsync(
-    props.messages,
-    async ({ heading, content, ...actions }) => ({
-      ...actions,
-      ...renderChildFragment(heading, {
-        html: "headingHtml",
-        text: "headingText",
-      }),
-      ...renderChildFragment(content),
-    })
+  return (
+    <GovUKCookieBanner
+      {...props}
+      messages={await mapAsync(
+        props.messages,
+        async ({ heading, content, actions = [], ...messages }) => ({
+          ...messages,
+          ...(await renderChildFragment(heading, {
+            html: "headingHtml",
+            text: "headingText",
+          })),
+          ...(await renderChildFragment(content)),
+          actions: await mapAsync(actions, async ({ content, ...action }) => ({
+            ...action,
+            ...(await renderChildFragment(content)),
+          })),
+        })
+      )}
+    />
   );
-  return <GovUKCookieBanner {...props} messages={govukMessages} />;
 }

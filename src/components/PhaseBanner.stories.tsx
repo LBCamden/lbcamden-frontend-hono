@@ -40,15 +40,8 @@ export const Text: Story = {
 
 export const HtmlAsText: Story = {
   args: {
-    children: (
-      <>
-        This is a new service - your{" "}
-        <a href="#" class="govuk-link">
-          feedback
-        </a>{" "}
-        will help us to improve it.
-      </>
-    ),
+    children:
+      'This is a new service - your\n<a href="#" class="govuk-link">\nfeedback\n</a>\nwill help us to improve it.',
   },
 };
 

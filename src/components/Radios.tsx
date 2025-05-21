@@ -1,6 +1,11 @@
 import { Child, JSXNode } from "hono/jsx";
 import { GovUKRadios, type GovUKRadiosProps } from "../upstream/govuk";
-import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
+import {
+  renderChildFragment,
+  mapAsync,
+  renderHtml,
+} from "../lib/hono-jsx-utils";
+import { compact } from "lodash-es";
 
 export interface RadiosProps
   extends Omit<
@@ -11,6 +16,21 @@ export interface RadiosProps
   errorMessage?: Child;
   items: RadioItem[];
   children?: Child;
+
+  /** Additional options for the form group containing the radios component. **/
+  formGroup?: {
+    /** Classes to add to the form group (for example to show error state for the whole group). **/
+    classes?: string;
+
+    /** HTML attributes (for example data attributes) to add to the form group. **/
+    attributes?: Record<string, unknown>;
+
+    /** Content to add before all radio items within the checkboxes component. **/
+    beforeInputs?: Child;
+
+    /** Content to add after all radio items within the checkboxes component. **/
+    afterInputs?: Child;
+  };
 }
 
 interface RadioItem {
@@ -33,7 +53,7 @@ interface RadioItem {
   };
 
   /** Can be used to add a hint to each radio item within the radios component. **/
-  hint?: Record<string, unknown>;
+  hint?: Child;
 
   /** Divider text to separate radio items, for example the text `"or"`. **/
   divider?: string;
@@ -42,10 +62,7 @@ interface RadioItem {
   checked?: boolean;
 
   /** Provide additional content to reveal when the radio is checked. **/
-  conditional?: {
-    /** The HTML to reveal when the radio is checked. **/
-    html: string;
-  };
+  conditional?: Child;
 
   /** If `true`, radio will be disabled. **/
   disabled?: boolean;
@@ -58,17 +75,28 @@ export async function Radios({
   fieldset,
   hint,
   errorMessage,
+  formGroup,
   ...props
 }: RadiosProps) {
-  const items = await mapAsync(props.items, async ({ content, ...rest }) => ({
-    ...rest,
-    ...(await renderChildFragment(content)),
-  }));
-
   return (
     <GovUKRadios
       {...props}
-      items={items}
+      items={await mapAsync(
+        compact(props.items),
+        async ({ content, hint, conditional, ...rest }) => ({
+          ...rest,
+          ...(await renderChildFragment(content)),
+          hint: await renderChildFragment(hint),
+          conditional: await renderChildFragment(conditional),
+        })
+      )}
+      formGroup={
+        formGroup && {
+          ...formGroup,
+          beforeInputs: await renderChildFragment(formGroup.beforeInputs),
+          afterInputs: await renderChildFragment(formGroup.afterInputs),
+        }
+      }
       hint={await renderChildFragment(hint)}
       errorMessage={await renderChildFragment(errorMessage)}
     />

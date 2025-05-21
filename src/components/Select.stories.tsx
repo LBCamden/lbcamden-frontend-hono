@@ -13,9 +13,9 @@ export const Default: Story = {
     name: "select-1",
     label: "Label text goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2", selected: true },
-      { value: 3, children: "GOV.UK frontend option 3", disabled: true },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2", selected: true },
+      { value: 3, content: "GOV.UK frontend option 3", disabled: true },
     ],
   },
 };
@@ -44,9 +44,9 @@ export const WithSelectedValue: Story = {
     name: "select-1",
     label: "Label text goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
-      { value: 3, children: "GOV.UK frontend option 3", disabled: true },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
+      { value: 3, content: "GOV.UK frontend option 3", disabled: true },
     ],
     value: 2,
   },
@@ -60,9 +60,9 @@ export const WithHintTextAndErrorMessage: Story = {
     hint: "Hint text goes here",
     errorMessage: "Error message goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
-      { value: 3, children: "GOV.UK frontend option 3" },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
+      { value: 3, content: "GOV.UK frontend option 3" },
     ],
   },
 };
@@ -72,14 +72,14 @@ export const WithLabelAsPageHeading: Story = {
     id: "select-3",
     name: "select-3",
     label: {
-      children: "Label text goes here",
+      content: "Label text goes here",
       classes: "govuk-label--l",
       isPageHeading: true,
     },
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2", selected: true },
-      { value: 3, children: "GOV.UK frontend option 3", disabled: true },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2", selected: true },
+      { value: 3, content: "GOV.UK frontend option 3", disabled: true },
     ],
   },
 };
@@ -91,9 +91,9 @@ export const WithFullWidthOverride: Story = {
     classes: "govuk-!-width-full",
     label: "Label text goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2", selected: true },
-      { value: 3, children: "GOV.UK frontend option 3", disabled: true },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2", selected: true },
+      { value: 3, content: "GOV.UK frontend option 3", disabled: true },
     ],
   },
 };
@@ -106,9 +106,9 @@ export const WithOptionalFormGroupClasses: Story = {
     label: "Label text goes here",
     formGroup: { classes: "extra-class" },
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2", selected: true },
-      { value: 3, children: "GOV.UK frontend option 3", disabled: true },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2", selected: true },
+      { value: 3, content: "GOV.UK frontend option 3", disabled: true },
     ],
   },
 };
@@ -119,8 +119,8 @@ export const WithDescribedBy: Story = {
     name: "with-describedby",
     label: "Label text goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
     ],
     describedBy: "test-target-element",
   },
@@ -132,8 +132,8 @@ export const Attributes: Story = {
     name: "with-attributes",
     label: "Label text goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
     ],
     attributes: { "data-attribute": "my data value" },
   },
@@ -147,12 +147,12 @@ export const AttributesOnItems: Story = {
     value: 2,
     items: [
       {
-        children: "Option 1",
+        content: "Option 1",
         value: 1,
         attributes: { "data-attribute": "ABC", "data-second-attribute": "DEF" },
       },
       {
-        children: "Option 2",
+        content: "Option 2",
         value: 2,
         attributes: { "data-attribute": "GHI", "data-second-attribute": "JKL" },
       },
@@ -166,11 +166,11 @@ export const WithFalsyItems: Story = {
     name: "with-falsy-items",
     label: "Label text goes here",
     items: [
-      { children: "Option 1", value: 1 },
+      { content: "Option 1", value: 1 },
       null,
       false,
       "",
-      { children: "Options 2", value: 2 },
+      { content: "Options 2", value: 2 },
     ],
   },
 };
@@ -192,8 +192,8 @@ export const HintAndDescribedBy: Story = {
     describedBy: "test-target-element",
     hint: "Hint text goes here",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
     ],
   },
 };
@@ -205,8 +205,8 @@ export const Error: Story = {
     label: "Label text goes here",
     errorMessage: "Error message",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
     ],
   },
 };
@@ -219,8 +219,8 @@ export const ErrorAndDescribedBy: Story = {
     describedBy: "test-target-element",
     errorMessage: "Error message",
     items: [
-      { value: 1, children: "GOV.UK frontend option 1" },
-      { value: 2, children: "GOV.UK frontend option 2" },
+      { value: 1, content: "GOV.UK frontend option 1" },
+      { value: 2, content: "GOV.UK frontend option 2" },
     ],
   },
 };
@@ -230,7 +230,7 @@ export const WithoutValues: Story = {
     name: "colors",
     id: "colors",
     label: "Label text goes here",
-    items: [{ children: "Red" }, { children: "Green" }, { children: "Blue" }],
+    items: [{ content: "Red" }, { content: "Green" }, { content: "Blue" }],
   },
 };
 
@@ -239,7 +239,7 @@ export const WithoutValuesWithSelectedValue: Story = {
     name: "colors",
     id: "colors",
     label: "Label text goes here",
-    items: [{ children: "Red" }, { children: "Green" }, { children: "Blue" }],
+    items: [{ content: "Red" }, { content: "Green" }, { content: "Blue" }],
     value: "Green",
   },
 };
@@ -250,9 +250,9 @@ export const WithFalsyValues: Story = {
     id: "falsy-values",
     label: "Label text goes here",
     items: [
-      { children: "Empty string", value: "" },
-      { children: "Boolean false", value: false },
-      { children: "Number zero", value: 0 },
+      { content: "Empty string", value: "" },
+      { content: "Boolean false", value: false },
+      { content: "Number zero", value: 0 },
     ],
   },
 };
@@ -263,9 +263,9 @@ export const ItemSelectedOverridesValue: Story = {
     id: "colors",
     label: "Label text goes here",
     items: [
-      { value: "red", children: "Red" },
-      { value: "green", children: "Green", selected: false },
-      { value: "blue", children: "Blue" },
+      { value: "red", content: "Red" },
+      { value: "green", content: "Green", selected: false },
+      { value: "blue", content: "Blue" },
     ],
     value: "green",
   },

@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/html";
-import { DateInput } from "./DateInput";
+import { DateInput, DateInputProps } from "./DateInput";
 import { renderHtmlStory } from "../lib/story-utils";
 
-type Story = StoryObj<typeof DateInput>;
+type Story = StoryObj<DateInputProps>;
 
 export default {
   component: renderHtmlStory(DateInput),
-} satisfies Meta<typeof DateInput>;
+} satisfies Meta<DateInputProps>;
 
 export const Default: Story = { args: { id: "dob" } };
 

@@ -12,7 +12,7 @@ export interface CheckboxesProps
   formGroup?: CheckboxesFormGroup;
   items: (CheckboxesItem | false | null | "")[];
   hint?: string;
-  errorMessage?: string | false | null;
+  errorMessage?: Child;
 }
 
 export interface CheckboxesFormGroup {
@@ -95,7 +95,7 @@ export async function Checkboxes(props: CheckboxesProps) {
   return (
     <GovUKCheckboxes
       {...props}
-      errorMessage={props.errorMessage as any}
+      errorMessage={await renderChildFragment(props.errorMessage)}
       hint={props.hint as any}
       items={items}
       formGroup={
