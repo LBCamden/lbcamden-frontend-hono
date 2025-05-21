@@ -36,7 +36,20 @@ export async function honoTextOrHtmlToGovUK(param: Child, params = { html: 'html
   return { [params.html]: html }
 }
 
-export async function childOrContentObject<T extends { content?: Child }, Res>(item: Child | T, fn: (x: Partial<T>) => Res) {
+
+type Content = { content?: Child }
+type ContentToNunjucks<T extends Content> = Omit<T, 'content'> & { html: string, text: string }
+
+export async function childOrContentObject<T extends Content, Res>(item: Child | T, fn: (x: Partial<T>) => Promise<Res>): Promise<Res>
+export async function childOrContentObject<T extends Content>(item: Child | T): Promise<ContentToNunjucks<T>>
+export async function childOrContentObject<T extends Content>(item: Child | T, fn?: (x: Partial<T>) => Promise<any>) {
+  if (!fn) {
+    fn = async ({ content, ...rest }) => ({
+      ...rest,
+      ...await honoTextOrHtmlToGovUK(content)
+    })
+  }
+
   if (isJsxChild(item)) {
     return fn({ content: item } as Partial<T>)
   }
