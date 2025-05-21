@@ -2,9 +2,12 @@
 
 💡 Refer to the [Motivation & Context]('./motivation-and-context.md') document before reading this.
 
-In general, your job when exposing a component is to:
+In general, your job when implementing a new component is to:
 
-- Produce a 
+- Make sure that upstream libraries and generated interface files are up to date
+- Use the `scaffold` command to generate the boilerplate for your component
+- Amend the typescript interfaces to accept hono's `Child` type instead of html strings
+- In the component's implementation, map through your component's props and render any jsx children to html before passing through to nunjucks.
 
 ## Syncing with upstream changes
 
@@ -20,6 +23,8 @@ This will update files in `src/upstream` so that:
 
 - Each component has a matching typescript interface generated from the component's `macro-options.json` file
 - Each nunjucks template is imported and given typescript types allowing it to be used as a jsx component with the correct typings.
+
+Note that the codegen command will overwrite these files, so don't make any modifications to them.
 
 ## Scaffolding a new component and story
 
@@ -53,9 +58,13 @@ You'll mostly be concerned with ensuring that child html fragments can be expres
 
 The relationship between this library's conventions with child html fragments and how they relate to upstream conventions are documented in [Motivation & Context]('./motivation-and-context.md').
 
+You will find the helper functions in `src/lib/hono-jsx-utils.ts` useful for this.
+
 ## Running tests
 
 We don't currently have any automated tests. In the future, we could support these by comparing the rendered html output of this library's stories to the html fragments in upstream `fixtures.json` files.
+
+For now, you'll need to manually check that storybook stories render as expected by visually comparing them to the upstream storybook.
 
 ## Publishing changes
 

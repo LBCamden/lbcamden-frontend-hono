@@ -30,17 +30,17 @@ export async function renderHtml(param: Child): Promise<string | undefined> {
  * Examples:
  * 
  * ```tsx
- * // { html: "<span>Hello</span>" }
  * console.log(await renderChildFragment(<span>Hello</span>))
+ * // { html: "<span>Hello</span>" }
  * 
- * // { text: "<span>Hello</span>" }
  * console.log(await renderChildFragment("Hello"))
+ * // { text: "<span>Hello</span>" }
  * 
- * // { headingHtml: "<span>Hello</span>" }
  * console.log(await renderChildFragment(<span>Hello</span>, { html: "headingHtml", text: "headingText" }))
+ * // { headingHtml: "<span>Hello</span>" }
  * 
- * // { headingText: "Hello" }
  * console.log(await renderChildFragment("Hello", { html: "headingHtml", text: "headingText" }))
+ * // { headingText: "Hello" }
  * ```
  */
 export async function renderChildFragment<Html extends string, Text extends string>(param: Child, params: { html: Html, text: Text }): Promise<Record<Html | Text, string>>
@@ -71,14 +71,14 @@ export async function renderChildFragment(param: Child, params = { html: 'html',
  * These properties can be converted into a form suitable for upstream components as follows:
  * 
  * ```tsx
- * // { html: "<span>Hello</span>" }
  * console.log(await normaliseContentObject(<span>Hello</span>))
+ * // { html: "<span>Hello</span>" }
  * 
- * // { html: "<span>Hello</span>", classes: "my-custom-class" }
  * console.log(await normaliseContentObject{ content: <span>Hello</span>, classes: "my-custom-class" }))
+ * // { html: "<span>Hello</span>", classes: "my-custom-class" }
  * 
- * // { text: "Hello" }
  * console.log(await normaliseContentObject("Hello"))
+ * // { text: "Hello" }
  * ```
  */
 
