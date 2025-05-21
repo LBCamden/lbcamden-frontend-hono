@@ -1,7 +1,7 @@
 import { Child } from "hono/jsx";
 import { type GovUKFieldsetProps } from "../upstream/govuk";
 export interface FieldsetProps extends Omit<GovUKFieldsetProps, "html" | "legend"> {
-    legend?: FieldsetLegend;
+    legend?: FieldsetLegend | Child;
     children?: Child;
 }
 interface FieldsetLegend {

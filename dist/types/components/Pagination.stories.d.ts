@@ -1,0 +1,22 @@
+import { StoryObj } from "@storybook/html";
+import { Pagination } from "./Pagination";
+type Story = StoryObj<typeof Pagination>;
+declare const _default: {
+    component: import("@storybook/html").StoryFn<Partial<import("./Pagination").PaginationProps>>;
+};
+export default _default;
+export declare const Default: Story;
+export declare const WithCustomNavigationLandmark: Story;
+export declare const WithCustomLinkAndItemText: Story;
+export declare const WithCustomAccessibleLabelsOnItemLinks: Story;
+export declare const WithManyPages: Story;
+export declare const FirstPage: Story;
+export declare const LastPage: Story;
+export declare const WithPrevAndNextOnly: Story;
+export declare const WithPrevAndNextOnlyAndLabels: Story;
+export declare const WithPrevAndNextOnlyAndVeryLongLabels: Story;
+export declare const WithPrevAndNextOnlyInADifferentLanguage: Story;
+export declare const WithPreviousOnly: Story;
+export declare const WithNextOnly: Story;
+export declare const WithCustomClasses: Story;
+export declare const WithCustomAttributes: Story;

@@ -1,0 +1,24 @@
+import { StoryObj } from "@storybook/html";
+import { Label } from "./Label";
+type Story = StoryObj<typeof Label>;
+declare const _default: {
+    component: import("@storybook/html").StoryFn<Partial<import("./Label").LabelProps>>;
+};
+export default _default;
+export declare const Default: Story;
+export declare const WithBoldText: Story;
+export declare const StyledAsXlText: Story;
+export declare const StyledAsLargeText: Story;
+export declare const StyledAsMediumText: Story;
+export declare const StyledAsSmallText: Story;
+export declare const AsPageHeadingXl: Story;
+export declare const AsPageHeadingL: Story;
+export declare const AsPageHeadingM: Story;
+export declare const AsPageHeadingS: Story;
+export declare const AsPageHeadingWithoutClass: Story;
+export declare const Empty: Story;
+export declare const Classes: Story;
+export declare const HtmlAsText: Story;
+export declare const Html: Story;
+export declare const For: Story;
+export declare const Attributes: Story;

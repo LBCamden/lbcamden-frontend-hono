@@ -10,7 +10,7 @@ export function renderHtmlStory<Params>(
   return (args) => {
     const el = document.createElement("div");
 
-    const rendered = <Component {...args} />;
+    const rendered = <Component {...(args as any)} />;
 
     Promise.resolve(rendered.toString()).then((res) => {
       el.innerHTML = res;

@@ -1,7 +1,7 @@
 import { Child } from "hono/jsx";
 import { type GovUKAccordionProps } from "../upstream/govuk";
 export interface AccordionProps extends Omit<GovUKAccordionProps, "items"> {
-    items: AccordionItem[];
+    items: (AccordionItem | false | "" | null)[];
 }
 export interface AccordionItem {
     /** The heading of each accordion section. **/

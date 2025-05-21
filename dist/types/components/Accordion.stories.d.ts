@@ -1,0 +1,20 @@
+import { StoryObj } from "@storybook/html";
+import { AccordionProps } from "./Accordion";
+type Story = StoryObj<AccordionProps>;
+declare const _default: {
+    component: import("@storybook/html").StoryFn<Partial<AccordionProps>>;
+};
+export default _default;
+export declare const Default: Story;
+export declare const WithAdditionalDescriptions: Story;
+export declare const WithLongContentAndDescription: Story;
+export declare const WithOneSectionOpen: Story;
+export declare const WithAllSectionsAlreadyOpen: Story;
+export declare const WithFocusableElementsInside: Story;
+export declare const WithTranslations: Story;
+export declare const Classes: Story;
+export declare const Attributes: Story;
+export declare const CustomHeadingLevel: Story;
+export declare const HeadingHtml: Story;
+export declare const WithFalsyValues: Story;
+export declare const WithRememberExpandedOff: Story;

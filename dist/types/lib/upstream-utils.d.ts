@@ -13,11 +13,13 @@ interface MacroOpt {
     description?: string;
     params?: MacroOpt[];
 }
+export declare function scaffoldStories(conf: UpstreamOpts): Promise<void>;
 export declare function scaffoldComponents(conf: UpstreamOpts): Promise<void>;
 export declare function genInterfaces(conf: UpstreamOpts): Promise<void>;
 export declare function readComponents({ dir, only, exclude }: Pick<UpstreamOpts, 'dir' | "only" | 'exclude'>): AsyncGenerator<{
     component: string;
     opts: any;
+    fixtures: any;
 }, {
     component: string;
     opts: MacroOpt;

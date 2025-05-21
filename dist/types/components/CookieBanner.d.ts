@@ -13,7 +13,7 @@ interface CookieBannerMessage {
 }
 interface CookieBannerAction {
     /** The button or link text. **/
-    text: string;
+    content: Child;
     /** The type of button – `"button"` or `"submit"`. If `href` is provided, set `type` to `"button"` render a link styled as a button. **/
     type?: string;
     /** The `href` for a link. Set `type` to `"button"` and set `href` to render a link styled as a button. **/
