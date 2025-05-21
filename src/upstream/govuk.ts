@@ -1,4 +1,5 @@
 import { FC } from "hono/jsx"
+import nunjucksComponent from "../lib/nunjucks-jsx"
 
 import GovUKAccordionTemplate from "govuk-frontend/dist/govuk/components/accordion/template.njk"
 
@@ -70,7 +71,7 @@ export interface GovUKAccordionProps {
   }>
 }
 
-export const GovUKAccordion = GovUKAccordionTemplate as FC<GovUKAccordionProps>
+export const GovUKAccordion = nunjucksComponent(GovUKAccordionTemplate) as FC<GovUKAccordionProps>
 
 import GovUKBackLinkTemplate from "govuk-frontend/dist/govuk/components/back-link/template.njk"
 
@@ -91,7 +92,7 @@ export interface GovUKBackLinkProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKBackLink = GovUKBackLinkTemplate as FC<GovUKBackLinkProps>
+export const GovUKBackLink = nunjucksComponent(GovUKBackLinkTemplate) as FC<GovUKBackLinkProps>
 
 import GovUKBreadcrumbsTemplate from "govuk-frontend/dist/govuk/components/breadcrumbs/template.njk"
 
@@ -124,7 +125,7 @@ export interface GovUKBreadcrumbsProps {
   labelText?: string
 }
 
-export const GovUKBreadcrumbs = GovUKBreadcrumbsTemplate as FC<GovUKBreadcrumbsProps>
+export const GovUKBreadcrumbs = nunjucksComponent(GovUKBreadcrumbsTemplate) as FC<GovUKBreadcrumbsProps>
 
 import GovUKButtonTemplate from "govuk-frontend/dist/govuk/components/button/template.njk"
 
@@ -169,7 +170,7 @@ export interface GovUKButtonProps {
   id?: string
 }
 
-export const GovUKButton = GovUKButtonTemplate as FC<GovUKButtonProps>
+export const GovUKButton = nunjucksComponent(GovUKButtonTemplate) as FC<GovUKButtonProps>
 
 import GovUKCharacterCountTemplate from "govuk-frontend/dist/govuk/components/character-count/template.njk"
 
@@ -268,7 +269,7 @@ export interface GovUKCharacterCountProps {
   wordsOverLimitText?: Record<string, unknown>
 }
 
-export const GovUKCharacterCount = GovUKCharacterCountTemplate as FC<GovUKCharacterCountProps>
+export const GovUKCharacterCount = nunjucksComponent(GovUKCharacterCountTemplate) as FC<GovUKCharacterCountProps>
 
 import GovUKCheckboxesTemplate from "govuk-frontend/dist/govuk/components/checkboxes/template.njk"
 
@@ -379,7 +380,7 @@ export interface GovUKCheckboxesProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKCheckboxes = GovUKCheckboxesTemplate as FC<GovUKCheckboxesProps>
+export const GovUKCheckboxes = nunjucksComponent(GovUKCheckboxesTemplate) as FC<GovUKCheckboxesProps>
 
 import GovUKCookieBannerTemplate from "govuk-frontend/dist/govuk/components/cookie-banner/template.njk"
 
@@ -448,7 +449,7 @@ export interface GovUKCookieBannerProps {
   }>
 }
 
-export const GovUKCookieBanner = GovUKCookieBannerTemplate as FC<GovUKCookieBannerProps>
+export const GovUKCookieBanner = nunjucksComponent(GovUKCookieBannerTemplate) as FC<GovUKCookieBannerProps>
 
 import GovUKDateInputTemplate from "govuk-frontend/dist/govuk/components/date-input/template.njk"
 
@@ -529,7 +530,7 @@ export interface GovUKDateInputProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKDateInput = GovUKDateInputTemplate as FC<GovUKDateInputProps>
+export const GovUKDateInput = nunjucksComponent(GovUKDateInputTemplate) as FC<GovUKDateInputProps>
 
 import GovUKDetailsTemplate from "govuk-frontend/dist/govuk/components/details/template.njk"
 
@@ -559,7 +560,7 @@ export interface GovUKDetailsProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKDetails = GovUKDetailsTemplate as FC<GovUKDetailsProps>
+export const GovUKDetails = nunjucksComponent(GovUKDetailsTemplate) as FC<GovUKDetailsProps>
 
 import GovUKErrorMessageTemplate from "govuk-frontend/dist/govuk/components/error-message/template.njk"
 
@@ -583,7 +584,7 @@ export interface GovUKErrorMessageProps {
   visuallyHiddenText?: string
 }
 
-export const GovUKErrorMessage = GovUKErrorMessageTemplate as FC<GovUKErrorMessageProps>
+export const GovUKErrorMessage = nunjucksComponent(GovUKErrorMessageTemplate) as FC<GovUKErrorMessageProps>
 
 import GovUKErrorSummaryTemplate from "govuk-frontend/dist/govuk/components/error-summary/template.njk"
 
@@ -625,7 +626,7 @@ export interface GovUKErrorSummaryProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKErrorSummary = GovUKErrorSummaryTemplate as FC<GovUKErrorSummaryProps>
+export const GovUKErrorSummary = nunjucksComponent(GovUKErrorSummaryTemplate) as FC<GovUKErrorSummaryProps>
 
 import GovUKExitThisPageTemplate from "govuk-frontend/dist/govuk/components/exit-this-page/template.njk"
 
@@ -661,7 +662,7 @@ export interface GovUKExitThisPageProps {
   pressOneMoreTimeText?: string
 }
 
-export const GovUKExitThisPage = GovUKExitThisPageTemplate as FC<GovUKExitThisPageProps>
+export const GovUKExitThisPage = nunjucksComponent(GovUKExitThisPageTemplate) as FC<GovUKExitThisPageProps>
 
 import GovUKFieldsetTemplate from "govuk-frontend/dist/govuk/components/fieldset/template.njk"
 
@@ -697,7 +698,7 @@ export interface GovUKFieldsetProps {
   html?: string
 }
 
-export const GovUKFieldset = GovUKFieldsetTemplate as FC<GovUKFieldsetProps>
+export const GovUKFieldset = nunjucksComponent(GovUKFieldsetTemplate) as FC<GovUKFieldsetProps>
 
 import GovUKFileUploadTemplate from "govuk-frontend/dist/govuk/components/file-upload/template.njk"
 
@@ -784,7 +785,7 @@ export interface GovUKFileUploadProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKFileUpload = GovUKFileUploadTemplate as FC<GovUKFileUploadProps>
+export const GovUKFileUpload = nunjucksComponent(GovUKFileUploadTemplate) as FC<GovUKFileUploadProps>
 
 import GovUKFooterTemplate from "govuk-frontend/dist/govuk/components/footer/template.njk"
 
@@ -865,7 +866,7 @@ export interface GovUKFooterProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKFooter = GovUKFooterTemplate as FC<GovUKFooterProps>
+export const GovUKFooter = nunjucksComponent(GovUKFooterTemplate) as FC<GovUKFooterProps>
 
 import GovUKHeaderTemplate from "govuk-frontend/dist/govuk/components/header/template.njk"
 
@@ -925,7 +926,7 @@ export interface GovUKHeaderProps {
   useTudorCrown?: boolean
 }
 
-export const GovUKHeader = GovUKHeaderTemplate as FC<GovUKHeaderProps>
+export const GovUKHeader = nunjucksComponent(GovUKHeaderTemplate) as FC<GovUKHeaderProps>
 
 import GovUKHintTemplate from "govuk-frontend/dist/govuk/components/hint/template.njk"
 
@@ -946,7 +947,7 @@ export interface GovUKHintProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKHint = GovUKHintTemplate as FC<GovUKHintProps>
+export const GovUKHint = nunjucksComponent(GovUKHintTemplate) as FC<GovUKHintProps>
 
 import GovUKInputTemplate from "govuk-frontend/dist/govuk/components/input/template.njk"
 
@@ -1066,7 +1067,7 @@ export interface GovUKInputProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKInput = GovUKInputTemplate as FC<GovUKInputProps>
+export const GovUKInput = nunjucksComponent(GovUKInputTemplate) as FC<GovUKInputProps>
 
 import GovUKInsetTextTemplate from "govuk-frontend/dist/govuk/components/inset-text/template.njk"
 
@@ -1087,7 +1088,7 @@ export interface GovUKInsetTextProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKInsetText = GovUKInsetTextTemplate as FC<GovUKInsetTextProps>
+export const GovUKInsetText = nunjucksComponent(GovUKInsetTextTemplate) as FC<GovUKInsetTextProps>
 
 import GovUKLabelTemplate from "govuk-frontend/dist/govuk/components/label/template.njk"
 
@@ -1111,7 +1112,7 @@ export interface GovUKLabelProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKLabel = GovUKLabelTemplate as FC<GovUKLabelProps>
+export const GovUKLabel = nunjucksComponent(GovUKLabelTemplate) as FC<GovUKLabelProps>
 
 import GovUKNotificationBannerTemplate from "govuk-frontend/dist/govuk/components/notification-banner/template.njk"
 
@@ -1154,7 +1155,7 @@ export interface GovUKNotificationBannerProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKNotificationBanner = GovUKNotificationBannerTemplate as FC<GovUKNotificationBannerProps>
+export const GovUKNotificationBanner = nunjucksComponent(GovUKNotificationBannerTemplate) as FC<GovUKNotificationBannerProps>
 
 import GovUKPaginationTemplate from "govuk-frontend/dist/govuk/components/pagination/template.njk"
 
@@ -1226,7 +1227,7 @@ export interface GovUKPaginationProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKPagination = GovUKPaginationTemplate as FC<GovUKPaginationProps>
+export const GovUKPagination = nunjucksComponent(GovUKPaginationTemplate) as FC<GovUKPaginationProps>
 
 import GovUKPanelTemplate from "govuk-frontend/dist/govuk/components/panel/template.njk"
 
@@ -1253,7 +1254,7 @@ export interface GovUKPanelProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKPanel = GovUKPanelTemplate as FC<GovUKPanelProps>
+export const GovUKPanel = nunjucksComponent(GovUKPanelTemplate) as FC<GovUKPanelProps>
 
 import GovUKPasswordInputTemplate from "govuk-frontend/dist/govuk/components/password-input/template.njk"
 
@@ -1343,7 +1344,7 @@ export interface GovUKPasswordInputProps {
   }
 }
 
-export const GovUKPasswordInput = GovUKPasswordInputTemplate as FC<GovUKPasswordInputProps>
+export const GovUKPasswordInput = nunjucksComponent(GovUKPasswordInputTemplate) as FC<GovUKPasswordInputProps>
 
 import GovUKPhaseBannerTemplate from "govuk-frontend/dist/govuk/components/phase-banner/template.njk"
 
@@ -1364,7 +1365,7 @@ export interface GovUKPhaseBannerProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKPhaseBanner = GovUKPhaseBannerTemplate as FC<GovUKPhaseBannerProps>
+export const GovUKPhaseBanner = nunjucksComponent(GovUKPhaseBannerTemplate) as FC<GovUKPhaseBannerProps>
 
 import GovUKRadiosTemplate from "govuk-frontend/dist/govuk/components/radios/template.njk"
 
@@ -1466,7 +1467,7 @@ export interface GovUKRadiosProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKRadios = GovUKRadiosTemplate as FC<GovUKRadiosProps>
+export const GovUKRadios = nunjucksComponent(GovUKRadiosTemplate) as FC<GovUKRadiosProps>
 
 import GovUKSelectTemplate from "govuk-frontend/dist/govuk/components/select/template.njk"
 
@@ -1547,7 +1548,7 @@ export interface GovUKSelectProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKSelect = GovUKSelectTemplate as FC<GovUKSelectProps>
+export const GovUKSelect = nunjucksComponent(GovUKSelectTemplate) as FC<GovUKSelectProps>
 
 import GovUKServiceNavigationTemplate from "govuk-frontend/dist/govuk/components/service-navigation/template.njk"
 
@@ -1619,7 +1620,7 @@ export interface GovUKServiceNavigationProps {
   }
 }
 
-export const GovUKServiceNavigation = GovUKServiceNavigationTemplate as FC<GovUKServiceNavigationProps>
+export const GovUKServiceNavigation = nunjucksComponent(GovUKServiceNavigationTemplate) as FC<GovUKServiceNavigationProps>
 
 import GovUKSkipLinkTemplate from "govuk-frontend/dist/govuk/components/skip-link/template.njk"
 
@@ -1640,7 +1641,7 @@ export interface GovUKSkipLinkProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKSkipLink = GovUKSkipLinkTemplate as FC<GovUKSkipLinkProps>
+export const GovUKSkipLink = nunjucksComponent(GovUKSkipLinkTemplate) as FC<GovUKSkipLinkProps>
 
 import GovUKSummaryListTemplate from "govuk-frontend/dist/govuk/components/summary-list/template.njk"
 
@@ -1760,7 +1761,7 @@ export interface GovUKSummaryListProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKSummaryList = GovUKSummaryListTemplate as FC<GovUKSummaryListProps>
+export const GovUKSummaryList = nunjucksComponent(GovUKSummaryListTemplate) as FC<GovUKSummaryListProps>
 
 import GovUKTableTemplate from "govuk-frontend/dist/govuk/components/table/template.njk"
 
@@ -1829,7 +1830,7 @@ export interface GovUKTableProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKTable = GovUKTableTemplate as FC<GovUKTableProps>
+export const GovUKTable = nunjucksComponent(GovUKTableTemplate) as FC<GovUKTableProps>
 
 import GovUKTabsTemplate from "govuk-frontend/dist/govuk/components/tabs/template.njk"
 
@@ -1874,7 +1875,7 @@ export interface GovUKTabsProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKTabs = GovUKTabsTemplate as FC<GovUKTabsProps>
+export const GovUKTabs = nunjucksComponent(GovUKTabsTemplate) as FC<GovUKTabsProps>
 
 import GovUKTagTemplate from "govuk-frontend/dist/govuk/components/tag/template.njk"
 
@@ -1892,7 +1893,7 @@ export interface GovUKTagProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKTag = GovUKTagTemplate as FC<GovUKTagProps>
+export const GovUKTag = nunjucksComponent(GovUKTagTemplate) as FC<GovUKTagProps>
 
 import GovUKTaskListTemplate from "govuk-frontend/dist/govuk/components/task-list/template.njk"
 
@@ -1952,7 +1953,7 @@ export interface GovUKTaskListProps {
   idPrefix?: string
 }
 
-export const GovUKTaskList = GovUKTaskListTemplate as FC<GovUKTaskListProps>
+export const GovUKTaskList = nunjucksComponent(GovUKTaskListTemplate) as FC<GovUKTaskListProps>
 
 import GovUKTextareaTemplate from "govuk-frontend/dist/govuk/components/textarea/template.njk"
 
@@ -2024,7 +2025,7 @@ export interface GovUKTextareaProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKTextarea = GovUKTextareaTemplate as FC<GovUKTextareaProps>
+export const GovUKTextarea = nunjucksComponent(GovUKTextareaTemplate) as FC<GovUKTextareaProps>
 
 import GovUKWarningTextTemplate from "govuk-frontend/dist/govuk/components/warning-text/template.njk"
 
@@ -2045,5 +2046,5 @@ export interface GovUKWarningTextProps {
   attributes?: Record<string, unknown>
 }
 
-export const GovUKWarningText = GovUKWarningTextTemplate as FC<GovUKWarningTextProps>
+export const GovUKWarningText = nunjucksComponent(GovUKWarningTextTemplate) as FC<GovUKWarningTextProps>
 

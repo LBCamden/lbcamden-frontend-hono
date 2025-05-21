@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKPanel, type GovUKPanelProps } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface PanelProps
   extends Omit<GovUKPanelProps, "text" | "html" | "titleText" | "titleHtml"> {
@@ -12,8 +12,8 @@ export async function Panel({ title, children, ...props }: PanelProps) {
   return (
     <GovUKPanel
       {...props}
-      {...await honoTextOrHtmlToGovUK(children)}
-      {...await honoTextOrHtmlToGovUK(title, {
+      {...await renderChildFragment(children)}
+      {...await renderChildFragment(title, {
         text: "titleText",
         html: "titleHtml",
       })}

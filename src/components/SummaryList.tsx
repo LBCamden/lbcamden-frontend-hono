@@ -1,8 +1,8 @@
 import { Child } from "hono/jsx";
 import { GovUKSummaryList, type GovUKSummaryListProps } from "../upstream";
 import {
-  childOrContentObject,
-  honoTextOrHtmlToGovUK,
+  normaliseContentObject,
+  renderChildFragment,
   mapAsync,
 } from "../lib/hono-jsx-utils";
 import { compact } from "lodash-es";
@@ -95,8 +95,8 @@ export async function SummaryList(props: SummaryListProps) {
   const rows = await mapAsync(compact(props.rows), async (row) => {
     return {
       ...row,
-      key: await childOrContentObject(row.key),
-      value: await childOrContentObject(row.value),
+      key: await normaliseContentObject(row.key),
+      value: await normaliseContentObject(row.value),
       actions: row.actions && {
         ...row.actions,
         items:
@@ -114,7 +114,7 @@ export async function SummaryList(props: SummaryListProps) {
         props.card && {
           ...props.card,
           title: props.card.title
-            ? await childOrContentObject(props.card.title)
+            ? await normaliseContentObject(props.card.title)
             : undefined,
           actions: props.card.actions && {
             ...props.card.actions,
@@ -134,6 +134,6 @@ async function convertActionItem({
 }: SummaryListRowActionItem) {
   return {
     ...item,
-    ...(await honoTextOrHtmlToGovUK(content)),
+    ...(await renderChildFragment(content)),
   };
 }

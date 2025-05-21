@@ -1,8 +1,8 @@
 import { Child } from "hono/jsx";
 import { GovUKTaskList, type GovUKTaskListProps } from "../upstream";
 import {
-  childOrContentObject,
-  honoTextOrHtmlToGovUK,
+  normaliseContentObject,
+  renderChildFragment,
   isJsxChild,
   mapAsync,
 } from "../lib/hono-jsx-utils";
@@ -52,30 +52,12 @@ export async function TaskList(props: TaskListProps) {
       items={await mapAsync(props.items, async (item) => {
         return {
           ...item,
-          title: await childOrContentObject(
-            item.title,
-            async ({ content, ...rest }) => ({
-              ...rest,
-              ...(await honoTextOrHtmlToGovUK(content)),
-            })
-          ),
-          status: await childOrContentObject(
-            item.status,
-            async ({ content, tag, ...status }) => ({
-              ...status,
-              tag: tag
-                ? await childOrContentObject(
-                    tag,
-                    async ({ content, ...tag }) => ({
-                      ...tag,
-                      ...(await honoTextOrHtmlToGovUK(content)),
-                    })
-                  )
-                : undefined,
-              ...(await honoTextOrHtmlToGovUK(content)),
-            })
-          ),
-          hint: await honoTextOrHtmlToGovUK(item.hint),
+          title: await normaliseContentObject(item.title),
+          status: {
+            ...(await normaliseContentObject(item.status)),
+            tag: await normaliseContentObject(item.status.tag),
+          },
+          hint: await renderChildFragment(item.hint),
         };
       })}
     />

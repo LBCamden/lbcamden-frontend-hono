@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKTextarea, type GovUKTextareaProps } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface TextareaProps
   extends Omit<
@@ -21,9 +21,9 @@ export async function Textarea({
   return (
     <GovUKTextarea
       {...props}
-      label={await honoTextOrHtmlToGovUK(label)}
-      hint={await honoTextOrHtmlToGovUK(hint)}
-      errorMessage={await honoTextOrHtmlToGovUK(errorMessage)}
+      label={await renderChildFragment(label)}
+      hint={await renderChildFragment(hint)}
+      errorMessage={await renderChildFragment(errorMessage)}
     />
   );
 }

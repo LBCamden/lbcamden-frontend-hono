@@ -3,7 +3,7 @@ import {
   GovUKCookieBanner,
   type GovUKCookieBannerProps,
 } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
+import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface CookieBannerProps
   extends Omit<GovUKCookieBannerProps, "messages"> {
@@ -49,11 +49,11 @@ export async function CookieBanner(props: CookieBannerProps) {
     props.messages,
     async ({ heading, content, ...actions }) => ({
       ...actions,
-      ...honoTextOrHtmlToGovUK(heading, {
+      ...renderChildFragment(heading, {
         html: "headingHtml",
         text: "headingText",
       }),
-      ...honoTextOrHtmlToGovUK(content),
+      ...renderChildFragment(content),
     })
   );
   return <GovUKCookieBanner {...props} messages={govukMessages} />;

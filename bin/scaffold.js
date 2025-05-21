@@ -1,3 +1,7 @@
+/**
+ * Scaffolds a component and storybook file wrapping an upstream component.
+ */
+
 import { scaffoldComponents } from "../src/lib/upstream-utils";
 
 const { lbcamden, govuk } = getOpts();

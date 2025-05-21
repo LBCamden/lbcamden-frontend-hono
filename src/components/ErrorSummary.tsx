@@ -3,7 +3,7 @@ import {
   GovUKErrorSummary,
   type GovUKErrorSummaryProps,
 } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
+import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface ErrorSummaryProps
   extends Omit<
@@ -39,7 +39,7 @@ export async function ErrorSummary({
     props.errorList ?? [],
     async ({ content, ...props }) => ({
       ...props,
-      ...(await honoTextOrHtmlToGovUK(content)),
+      ...(await renderChildFragment(content)),
     })
   );
 
@@ -47,11 +47,11 @@ export async function ErrorSummary({
     <GovUKErrorSummary
       {...props}
       errorList={errorList}
-      {...await honoTextOrHtmlToGovUK(title, {
+      {...await renderChildFragment(title, {
         text: "titleText",
         html: "titleHtml",
       })}
-      {...await honoTextOrHtmlToGovUK(description, {
+      {...await renderChildFragment(description, {
         text: "descriptionText",
         html: "descriptionHtml",
       })}

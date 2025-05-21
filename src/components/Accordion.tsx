@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKAccordion, type GovUKAccordionProps } from "../upstream/govuk";
-import { mapAsync, honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { mapAsync, renderChildFragment } from "../lib/hono-jsx-utils";
 import { compact } from "lodash-es";
 
 export interface AccordionProps extends Omit<GovUKAccordionProps, "items"> {
@@ -26,9 +26,9 @@ export async function Accordion({ items, ...props }: AccordionProps) {
     items,
     async (item) =>
       item && {
-        heading: await honoTextOrHtmlToGovUK(item.heading),
-        summary: await honoTextOrHtmlToGovUK(item.summary),
-        content: await honoTextOrHtmlToGovUK(item.content),
+        heading: await renderChildFragment(item.heading),
+        summary: await renderChildFragment(item.summary),
+        content: await renderChildFragment(item.content),
         expanded: item.expanded,
       }
   );

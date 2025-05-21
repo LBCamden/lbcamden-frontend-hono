@@ -3,7 +3,7 @@ import {
   GovUKNotificationBanner,
   type GovUKNotificationBannerProps,
 } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface NotificationBannerProps
   extends Omit<
@@ -22,8 +22,8 @@ export async function NotificationBanner({
   return (
     <GovUKNotificationBanner
       {...props}
-      {...await honoTextOrHtmlToGovUK(children)}
-      {...await honoTextOrHtmlToGovUK(title, {
+      {...await renderChildFragment(children)}
+      {...await renderChildFragment(title, {
         text: "titleText",
         html: "titleHtml",
       })}

@@ -1,7 +1,7 @@
 import { Child } from "hono/jsx";
 import { GovUKSelect, type GovUKSelectProps } from "../upstream/govuk";
 import { HasEmbeddedContentArray } from "../types";
-import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
+import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface SelectProps
   extends Omit<
@@ -16,14 +16,14 @@ export interface SelectProps
 export async function Select({ hint, errorMessage, ...props }: SelectProps) {
   const items = await mapAsync(props.items, async ({ content, ...item }) => ({
     ...item,
-    ...(await honoTextOrHtmlToGovUK(content)),
+    ...(await renderChildFragment(content)),
   }));
   return (
     <GovUKSelect
       {...props}
       items={items}
-      hint={await honoTextOrHtmlToGovUK(hint)}
-      errorMessage={await honoTextOrHtmlToGovUK(errorMessage)}
+      hint={await renderChildFragment(hint)}
+      errorMessage={await renderChildFragment(errorMessage)}
     />
   );
 }

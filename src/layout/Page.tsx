@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import LBCamdenTemplate from "./layout";
-import { renderTextOrHtml } from "../lib/hono-jsx-utils";
+import { renderHtml } from "../lib/hono-jsx-utils";
 import { AssetPathOpts, getAssetPaths } from "../utils/asset-paths";
 
 export interface PageProps {
@@ -61,18 +61,18 @@ export async function Page(baseProps: PageProps) {
   return (
     <LBCamdenTemplate
       {...props}
-      headIcons={await renderTextOrHtml(headIcons)}
-      head={await renderTextOrHtml(head)}
-      bodyStart={await renderTextOrHtml(bodyStart)}
-      skipLink={await renderTextOrHtml(skipLink)}
-      header={await renderTextOrHtml(header)}
-      main={await renderTextOrHtml(main)}
-      beforeContent={await renderTextOrHtml(beforeContent)}
-      content={await renderTextOrHtml(children)}
-      postContent={await renderTextOrHtml(postContent)}
-      afterContent={await renderTextOrHtml(afterContent)}
-      footer={await renderTextOrHtml(footer)}
-      bodyEnd={await renderTextOrHtml(bodyEnd)}
+      headIcons={await renderHtml(headIcons)}
+      head={await renderHtml(head)}
+      bodyStart={await renderHtml(bodyStart)}
+      skipLink={await renderHtml(skipLink)}
+      header={await renderHtml(header)}
+      main={await renderHtml(main)}
+      beforeContent={await renderHtml(beforeContent)}
+      content={await renderHtml(children)}
+      postContent={await renderHtml(postContent)}
+      afterContent={await renderHtml(afterContent)}
+      footer={await renderHtml(footer)}
+      bodyEnd={await renderHtml(bodyEnd)}
     />
   );
 }

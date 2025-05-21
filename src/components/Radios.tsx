@@ -1,6 +1,6 @@
 import { Child, JSXNode } from "hono/jsx";
 import { GovUKRadios, type GovUKRadiosProps } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
+import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
 
 export interface RadiosProps
   extends Omit<
@@ -62,15 +62,15 @@ export async function Radios({
 }: RadiosProps) {
   const items = await mapAsync(props.items, async ({ content, ...rest }) => ({
     ...rest,
-    ...(await honoTextOrHtmlToGovUK(content)),
+    ...(await renderChildFragment(content)),
   }));
 
   return (
     <GovUKRadios
       {...props}
       items={items}
-      hint={await honoTextOrHtmlToGovUK(hint)}
-      errorMessage={await honoTextOrHtmlToGovUK(errorMessage)}
+      hint={await renderChildFragment(hint)}
+      errorMessage={await renderChildFragment(errorMessage)}
     />
   );
 }

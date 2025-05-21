@@ -12,7 +12,6 @@ export default defineConfig({
         "node_modules/govuk-frontend/dist",
         "src/layout",
       ],
-      decorators: ["./src/lib/transform-hono-component.tsx"],
     }),
   ],
 

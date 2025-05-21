@@ -3,7 +3,7 @@ import {
   GovUKPhaseBanner,
   type GovUKPhaseBannerProps,
 } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface PhaseBannerProps
   extends Omit<GovUKPhaseBannerProps, "text" | "html" | "tag"> {
@@ -15,8 +15,8 @@ export async function PhaseBanner({ children, ...props }: PhaseBannerProps) {
   return (
     <GovUKPhaseBanner
       {...props}
-      {...await honoTextOrHtmlToGovUK(children)}
-      tag={await honoTextOrHtmlToGovUK(props.tag)}
+      {...await renderChildFragment(children)}
+      tag={await renderChildFragment(props.tag)}
     />
   );
 }

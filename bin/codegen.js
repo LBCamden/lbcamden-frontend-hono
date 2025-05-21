@@ -1,3 +1,7 @@
+/**
+ * Generates interface files for upstream nunjucks components, written to `src/upstream`
+ */
+
 import { genInterfaces } from "../src/lib/upstream-utils";
 
 genInterfaces({

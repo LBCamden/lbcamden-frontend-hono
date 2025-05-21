@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKWarningText, type GovUKWarningTextProps } from "../upstream";
-import { childOrContentObject } from "../lib/hono-jsx-utils";
+import { normaliseContentObject } from "../lib/hono-jsx-utils";
 
 export interface WarningTextProps
   extends Omit<GovUKWarningTextProps, "html" | "text"> {
@@ -9,6 +9,6 @@ export interface WarningTextProps
 
 export async function WarningText({ children, ...props }: WarningTextProps) {
   return (
-    <GovUKWarningText {...props} {...await childOrContentObject(children)} />
+    <GovUKWarningText {...props} {...await normaliseContentObject(children)} />
   );
 }

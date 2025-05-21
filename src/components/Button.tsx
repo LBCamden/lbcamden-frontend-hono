@@ -1,7 +1,7 @@
 import { Child } from "hono/jsx";
 import { LBCamdenButton, type LBCamdenButtonProps } from "../upstream/lbcamden";
 
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface ButtonProps
   extends Omit<LBCamdenButtonProps, "text" | "html"> {
@@ -9,5 +9,5 @@ export interface ButtonProps
 }
 
 export const Button = async ({ children, ...props }: ButtonProps) => (
-  <LBCamdenButton {...await honoTextOrHtmlToGovUK(children)} {...props} />
+  <LBCamdenButton {...await renderChildFragment(children)} {...props} />
 );

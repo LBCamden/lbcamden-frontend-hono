@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKCheckboxes, type GovUKCheckboxesProps } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK, mapAsync } from "../lib/hono-jsx-utils";
+import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
 import { compact } from "lodash-es";
 import { ValueOfArray } from "../utils/types";
 
@@ -86,8 +86,8 @@ export async function Checkboxes(props: CheckboxesProps) {
         ...rest,
         hint: hint as any,
         value: value as any,
-        ...(await honoTextOrHtmlToGovUK(content)),
-        conditional: await honoTextOrHtmlToGovUK(conditional),
+        ...(await renderChildFragment(content)),
+        conditional: await renderChildFragment(conditional),
       };
     }
   );
@@ -101,10 +101,8 @@ export async function Checkboxes(props: CheckboxesProps) {
       formGroup={
         props.formGroup && {
           ...props.formGroup,
-          afterInputs: await honoTextOrHtmlToGovUK(props.formGroup.afterInputs),
-          beforeInputs: await honoTextOrHtmlToGovUK(
-            props.formGroup.beforeInputs
-          ),
+          afterInputs: await renderChildFragment(props.formGroup.afterInputs),
+          beforeInputs: await renderChildFragment(props.formGroup.beforeInputs),
         }
       }
     />

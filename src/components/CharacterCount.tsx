@@ -3,7 +3,7 @@ import {
   GovUKCharacterCount,
   type GovUKCharacterCountProps,
 } from "../upstream";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface CharacterCountProps
   extends Omit<GovUKCharacterCountProps, "label" | "hint" | "formGroup"> {
@@ -27,8 +27,8 @@ export interface CharacterCountFormGroup {
 }
 
 export async function CharacterCount(props: CharacterCountProps) {
-  const label = await honoTextOrHtmlToGovUK(props.label);
-  const hint = await honoTextOrHtmlToGovUK(props.hint);
+  const label = await renderChildFragment(props.label);
+  const hint = await renderChildFragment(props.hint);
 
   return (
     <GovUKCharacterCount
@@ -37,8 +37,8 @@ export async function CharacterCount(props: CharacterCountProps) {
       hint={hint}
       formGroup={{
         ...props.formGroup,
-        beforeInput: await honoTextOrHtmlToGovUK(props.formGroup?.beforeInput),
-        afterInput: await honoTextOrHtmlToGovUK(props.formGroup?.afterInput),
+        beforeInput: await renderChildFragment(props.formGroup?.beforeInput),
+        afterInput: await renderChildFragment(props.formGroup?.afterInput),
       }}
     />
   );

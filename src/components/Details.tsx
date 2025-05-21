@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKDetails, type GovUKDetailsProps } from "../upstream";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface DetailsProps
   extends Omit<
@@ -15,8 +15,8 @@ export async function Details({ children, summary, ...props }: DetailsProps) {
   return (
     <GovUKDetails
       {...props}
-      {...await honoTextOrHtmlToGovUK(children)}
-      {...await honoTextOrHtmlToGovUK(summary, {
+      {...await renderChildFragment(children)}
+      {...await renderChildFragment(summary, {
         text: "summaryText",
         html: "summaryHtml",
       })}

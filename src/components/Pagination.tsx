@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKPagination, type GovUKPaginationProps } from "../upstream";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface PaginationProps
   extends Omit<GovUKPaginationProps, "next" | "previous"> {
@@ -38,6 +38,6 @@ async function convertAnchor(anchor?: PaginationAnchor) {
 
   return {
     ...rest,
-    ...(await honoTextOrHtmlToGovUK(content)),
+    ...(await renderChildFragment(content)),
   };
 }

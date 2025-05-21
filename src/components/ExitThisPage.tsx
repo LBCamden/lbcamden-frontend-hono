@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKExitThisPage, type GovUKExitThisPageProps } from "../upstream";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface ExitThisPageProps
   extends Omit<GovUKExitThisPageProps, "text" | "html"> {
@@ -9,6 +9,6 @@ export interface ExitThisPageProps
 
 export async function ExitThisPage({ children, ...props }: ExitThisPageProps) {
   return (
-    <GovUKExitThisPage {...props} {...await honoTextOrHtmlToGovUK(children)} />
+    <GovUKExitThisPage {...props} {...await renderChildFragment(children)} />
   );
 }

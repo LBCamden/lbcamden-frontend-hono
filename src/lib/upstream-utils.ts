@@ -189,6 +189,7 @@ export async function genInterfaces(conf: UpstreamOpts) {
   const buf: string[] = []
 
   buf.push('import { FC } from "hono/jsx"\n')
+  buf.push('import nunjucksComponent from "../lib/nunjucks-jsx"\n')
   buf.push('\n')
 
   for await (const { component, opts } of readComponents(conf)) {
@@ -206,7 +207,7 @@ export async function genInterfaces(conf: UpstreamOpts) {
     buf.push('\n')
     buf.push('\n')
 
-    buf.push('export const', componentName, '=', componentTemplateName, 'as', 'FC<', componentPropsName, '>\n')
+    buf.push('export const', componentName, '= nunjucksComponent(', componentTemplateName, ') as', 'FC<', componentPropsName, '>\n')
     buf.push('\n')
   }
 

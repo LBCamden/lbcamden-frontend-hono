@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKInput, type GovUKInputProps } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface InputProps
   extends Omit<
@@ -37,9 +37,9 @@ export async function Input({
       {...props}
       prefix={await convertAttachment(prefix)}
       suffix={await convertAttachment(suffix)}
-      label={await honoTextOrHtmlToGovUK(label)}
-      errorMessage={await honoTextOrHtmlToGovUK(errorMessage)}
-      hint={await honoTextOrHtmlToGovUK(hint)}
+      label={await renderChildFragment(label)}
+      errorMessage={await renderChildFragment(errorMessage)}
+      hint={await renderChildFragment(hint)}
     />
   );
 }
@@ -50,6 +50,6 @@ async function convertAttachment(params: InputAttachment | undefined) {
   const { content, ...rest } = params;
   return {
     ...rest,
-    ...(await honoTextOrHtmlToGovUK(content)),
+    ...(await renderChildFragment(content)),
   };
 }

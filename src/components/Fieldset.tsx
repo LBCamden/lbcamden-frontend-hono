@@ -1,9 +1,9 @@
 import { Child, isValidElement } from "hono/jsx";
 import { GovUKFieldset, type GovUKFieldsetProps } from "../upstream/govuk";
 import {
-  honoTextOrHtmlToGovUK,
+  renderChildFragment,
   isJsxChild,
-  renderTextOrHtml,
+  renderHtml,
 } from "../lib/hono-jsx-utils";
 
 export interface FieldsetProps
@@ -31,11 +31,11 @@ export async function Fieldset({ legend, children, ...props }: FieldsetProps) {
   return (
     <GovUKFieldset
       {...props}
-      html={await renderTextOrHtml(children)}
+      {...await renderChildFragment(children)}
       legend={
         legend && {
           ...(legend as any),
-          ...(await honoTextOrHtmlToGovUK(legend.content)),
+          ...(await renderChildFragment(legend.content)),
         }
       }
     />

@@ -1,6 +1,6 @@
 import { Child } from "hono/jsx";
 import { GovUKInsetText, type GovUKInsetTextProps } from "../upstream";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface InsetTextProps
   extends Omit<GovUKInsetTextProps, "text" | "html"> {
@@ -8,7 +8,5 @@ export interface InsetTextProps
 }
 
 export async function InsetText({ children, ...props }: InsetTextProps) {
-  return (
-    <GovUKInsetText {...props} {...await honoTextOrHtmlToGovUK(children)} />
-  );
+  return <GovUKInsetText {...props} {...await renderChildFragment(children)} />;
 }

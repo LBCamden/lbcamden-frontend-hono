@@ -3,7 +3,7 @@ import {
   GovUKPasswordInput,
   type GovUKPasswordInputProps,
 } from "../upstream/govuk";
-import { honoTextOrHtmlToGovUK } from "../lib/hono-jsx-utils";
+import { renderChildFragment } from "../lib/hono-jsx-utils";
 
 export interface PasswordInputProps
   extends Omit<
@@ -23,9 +23,9 @@ export async function PasswordInput({
 }: PasswordInputProps) {
   return (
     <GovUKPasswordInput
-      label={await honoTextOrHtmlToGovUK(label)}
-      errorMessage={await honoTextOrHtmlToGovUK(errorMessage)}
-      hint={await honoTextOrHtmlToGovUK(hint)}
+      label={await renderChildFragment(label)}
+      errorMessage={await renderChildFragment(errorMessage)}
+      hint={await renderChildFragment(hint)}
       {...props}
     />
   );
