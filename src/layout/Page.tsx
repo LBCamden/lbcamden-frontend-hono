@@ -19,6 +19,7 @@ export interface PageProps {
   afterContent?: Child;
   footer?: Child;
   bodyEnd?: Child;
+  pageTitle?: string;
 
   children?: Child;
 }

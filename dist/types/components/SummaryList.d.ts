@@ -2,7 +2,7 @@ import { Child } from "hono/jsx";
 import { type GovUKSummaryListProps } from "../upstream";
 export interface SummaryListProps extends Omit<GovUKSummaryListProps, "rows" | "card"> {
     /** The rows within the summary list component. **/
-    rows: SummaryListRow[];
+    rows: (SummaryListRow | false | null | undefined | "")[];
     /** Can be used to wrap a summary card around the summary list component. If any of these options are present, a summary card will wrap around the summary list. **/
     card?: {
         /** Data for the summary card header. **/

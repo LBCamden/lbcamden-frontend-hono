@@ -6,22 +6,23 @@ import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
 export interface SelectProps
   extends Omit<
     GovUKSelectProps,
-    "items" | "hint" | "errorMessage" | "fieldset"
+    "hint" | "label" | "errorMessage" | "fieldset"
   > {
   hint?: Child;
+  label?: Child;
   errorMessage?: Child;
-  items: HasEmbeddedContentArray<GovUKSelectProps["items"]>;
 }
 
-export async function Select({ hint, errorMessage, ...props }: SelectProps) {
-  const items = await mapAsync(props.items, async ({ content, ...item }) => ({
-    ...item,
-    ...(await renderChildFragment(content)),
-  }));
+export async function Select({
+  hint,
+  label,
+  errorMessage,
+  ...props
+}: SelectProps) {
   return (
     <GovUKSelect
       {...props}
-      items={items}
+      label={await renderChildFragment(label)}
       hint={await renderChildFragment(hint)}
       errorMessage={await renderChildFragment(errorMessage)}
     />

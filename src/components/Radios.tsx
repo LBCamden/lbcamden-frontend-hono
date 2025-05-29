@@ -35,7 +35,7 @@ export interface RadiosProps
 
 interface RadioItem {
   /** Text to use within each radio item label **/
-  content: JSXNode;
+  content: Child;
 
   /** Specific ID attribute for the radio item. If omitted, then `idPrefix` string will be applied. **/
   id?: string;

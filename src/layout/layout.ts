@@ -1,8 +1,7 @@
-
-import { HtmlEscapedString } from "hono/utils/html";
-
 // @ts-ignore
 import Layout from './layout.njk'
+import nunjucksComponent from "../lib/nunjucks-jsx";
+import { FC } from "hono/jsx";
 
 export interface PageLayoutProps {
   assetPath?: string;
@@ -20,6 +19,7 @@ export interface PageLayoutProps {
   afterContent?: string;
   footer?: string;
   bodyEnd?: string;
+  pageTitle?: string
 }
 
-export default Layout as (props: PageLayoutProps) => HtmlEscapedString
+export default nunjucksComponent(Layout) as FC<PageLayoutProps>

@@ -15,6 +15,7 @@ export interface PageProps {
     afterContent?: Child;
     footer?: Child;
     bodyEnd?: Child;
+    pageTitle?: string;
     children?: Child;
 }
 export declare function Page(baseProps: PageProps): Promise<import("hono/utils/html").HtmlEscapedString>;

@@ -1,4 +1,4 @@
-import { HtmlEscapedString } from "hono/utils/html";
+import { FC } from "hono/jsx";
 export interface PageLayoutProps {
     assetPath?: string;
     assetUrl?: string;
@@ -14,6 +14,7 @@ export interface PageLayoutProps {
     afterContent?: string;
     footer?: string;
     bodyEnd?: string;
+    pageTitle?: string;
 }
-declare const _default: (props: PageLayoutProps) => HtmlEscapedString;
+declare const _default: FC<PageLayoutProps>;
 export default _default;

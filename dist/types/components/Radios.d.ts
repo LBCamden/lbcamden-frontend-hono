@@ -1,4 +1,4 @@
-import { Child, JSXNode } from "hono/jsx";
+import { Child } from "hono/jsx";
 import { type GovUKRadiosProps } from "../upstream/govuk";
 export interface RadiosProps extends Omit<GovUKRadiosProps, "fieldSet" | "hint" | "errorMessage" | "formGroup" | "items"> {
     hint?: Child;
@@ -19,7 +19,7 @@ export interface RadiosProps extends Omit<GovUKRadiosProps, "fieldSet" | "hint" 
 }
 interface RadioItem {
     /** Text to use within each radio item label **/
-    content: JSXNode;
+    content: Child;
     /** Specific ID attribute for the radio item. If omitted, then `idPrefix` string will be applied. **/
     id?: string;
     /** Value for the radio input. **/

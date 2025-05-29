@@ -12,6 +12,14 @@
 {% endif %}
 {% endblock %}
 
+{% block pageTitle %}
+{% if params.pageTitle %}
+{{params.pageTitle|safe}}
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
 {% block head %}
 {% if params.head %}
 {{params.head|safe}}
@@ -21,6 +29,7 @@
 {% endblock %}
 
 {% block bodyStart %}
+<script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.classList.add("govuk-frontend-supported")</script>
 {% if params.bodyStart %}
 {{params.bodyStart|safe}}
 {% else %}
