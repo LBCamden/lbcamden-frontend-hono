@@ -7,6 +7,6 @@ export interface BackLinkProps
   children?: Child;
 }
 
-export function BackLink({ children, ...props }: BackLinkProps) {
-  return <GovUKBackLink {...renderChildFragment(children)} {...props} />;
+export async function BackLink({ children, ...props }: BackLinkProps) {
+  return <GovUKBackLink {...await renderChildFragment(children)} {...props} />;
 }

@@ -1,5 +1,5 @@
 import { Child } from "hono/jsx";
-export type EmbeddedContent<T> = Omit<T, "html" | "text"> & {
+export type EmbeddedContent<T> = Omit<NonNullable<T>, "html" | "text"> & {
     content?: Child;
 };
 export type HasEmbeddedContentArray<T> = {
