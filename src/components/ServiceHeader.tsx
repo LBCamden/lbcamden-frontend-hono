@@ -13,7 +13,7 @@ export async function ServiceHeader(props: ServiceHeaderProps) {
       >
         <div class="lbcamden-header__bar govuk-width-container">
           <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds-from-desktop">
+            <div class="govuk-grid-column-one-third-from-desktop">
               <div class="lbcamden-header__logo">
                 <a href="/" class="lbcamden-header__link">
                   <svg
@@ -34,12 +34,14 @@ export async function ServiceHeader(props: ServiceHeaderProps) {
                   <span class="govuk-visually-hidden">Camden.gov.uk</span>
                 </a>
               </div>
-
+            </div>
+            <div class="govuk-grid-column-one-third-from-desktop">
               {props.productName && (
                 <>
                   <nav
                     aria-labelledby="super-navigation-menu-heading"
                     class="lbcamden-header__content"
+                    style={{ justifyContent: "center" }}
                     data-module="super-navigation-mega-menu"
                   >
                     <h2
@@ -74,7 +76,14 @@ export async function ServiceHeader(props: ServiceHeaderProps) {
                             class="lbcamden-header__navigation-item-link"
                             href={props.homepageUrl ?? "/"}
                           >
-                            <span class="lbcamden-header__navigation-item-link-inner">
+                            <span
+                              class="lbcamden-header__navigation-item-link-inner"
+                              style={{
+                                position: "relative",
+                                top: "2px",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
                               {props.productName}
                             </span>
                           </a>

@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block bodyStart %}
-<script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.classList.add("govuk-frontend-supported")</script>
+<script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>if ('noModule' in HTMLScriptElement.prototype) document.body.classList.add("govuk-frontend-supported")</script>
 {% if params.bodyStart %}
 {{params.bodyStart|safe}}
 {% else %}
