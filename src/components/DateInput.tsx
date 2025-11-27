@@ -2,17 +2,20 @@ import { Child } from "hono/jsx";
 import { GovUKDateInput, type GovUKDateInputProps } from "../upstream/govuk";
 import { renderChildFragment } from "../lib/hono-jsx-utils";
 import { ValueOfArray } from "../utils/types";
+import { fieldsetOptions, FieldsetOptions } from "./Fieldset";
 
 export interface DateInputProps
   extends Omit<
     GovUKDateInputProps,
-    "formGroup" | "hint" | "errorMessage" | "items"
+    "formGroup" | "hint" | "errorMessage" | "items" | "fieldset"
   > {
   /** Can be used to add a hint to a date input component. **/
   hint?: Child;
 
   /** Can be used to add an error message to the date input component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. **/
   errorMessage?: Child;
+
+  fieldset?: FieldsetOptions;
 
   /** Additional options for the form group containing the date input component. **/
   formGroup?: {
@@ -43,11 +46,13 @@ export async function DateInput({
   hint,
   formGroup,
   errorMessage,
+  fieldset,
   ...props
 }: DateInputProps) {
   return (
     <GovUKDateInput
       {...props}
+      fieldset={await fieldsetOptions(fieldset)}
       items={props.items as GovUkDateInputItem[]}
       hint={await renderChildFragment(hint)}
       errorMessage={await renderChildFragment(errorMessage)}

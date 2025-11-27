@@ -4,6 +4,7 @@ import {
   type GovUKCharacterCountProps,
 } from "../upstream";
 import { renderChildFragment } from "../lib/hono-jsx-utils";
+import { labelOpts, LabelOpts } from "./Label";
 
 export interface CharacterCountProps
   extends Omit<
@@ -14,14 +15,23 @@ export interface CharacterCountProps
     | "textareaDescriptionText"
     | "textareaDescriptionHtml"
     | "errorMessage"
+    | "maxwords"
+    | "maxlength"
+    | "threshold"
   > {
-  label?: Child;
+  label?: LabelOpts | Child;
   hint?: Child;
   formGroup?: CharacterCountFormGroup;
   textareaDescription?: Child;
 
   /** Can be used to add an error message to the character count component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`. **/
   errorMessage?: Child;
+
+  maxWords?: number;
+
+  maxLength?: number;
+
+  threshold?: number;
 }
 
 export interface CharacterCountFormGroup {
@@ -38,8 +48,12 @@ export interface CharacterCountFormGroup {
   afterInput?: Child;
 }
 
-export async function CharacterCount(props: CharacterCountProps) {
-  const label = await renderChildFragment(props.label);
+export async function CharacterCount({
+  maxLength,
+  maxWords,
+  ...props
+}: CharacterCountProps) {
+  const label = await labelOpts(props.label);
   const hint = await renderChildFragment(props.hint);
 
   return (
@@ -57,6 +71,9 @@ export async function CharacterCount(props: CharacterCountProps) {
         beforeInput: await renderChildFragment(props.formGroup?.beforeInput),
         afterInput: await renderChildFragment(props.formGroup?.afterInput),
       }}
+      maxlength={maxLength as any}
+      maxwords={maxWords as any}
+      threshold={props.threshold as any}
     />
   );
 }

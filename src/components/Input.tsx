@@ -1,13 +1,14 @@
 import { Child } from "hono/jsx";
 import { GovUKInput, type GovUKInputProps } from "../upstream/govuk";
 import { renderChildFragment } from "../lib/hono-jsx-utils";
+import { LabelOpts, labelOpts } from "./Label";
 
 export interface InputProps
   extends Omit<
     GovUKInputProps,
     "label" | "hint" | "prefix" | "suffix" | "formGroup" | "errorMessage"
   > {
-  label: Child;
+  label: LabelOpts | Child;
   hint?: Child;
   errorMessage?: Child;
   prefix?: InputAttachment;
@@ -37,7 +38,7 @@ export async function Input({
       {...props}
       prefix={await convertAttachment(prefix)}
       suffix={await convertAttachment(suffix)}
-      label={await renderChildFragment(label)}
+      label={await labelOpts(label)}
       errorMessage={await renderChildFragment(errorMessage)}
       hint={await renderChildFragment(hint)}
     />

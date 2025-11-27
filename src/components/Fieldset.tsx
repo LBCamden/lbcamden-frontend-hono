@@ -6,9 +6,12 @@ import {
   renderHtml,
 } from "../lib/hono-jsx-utils";
 
-export interface FieldsetProps
+export interface FieldsetOptions
   extends Omit<GovUKFieldsetProps, "html" | "legend"> {
   legend?: FieldsetLegend | Child;
+}
+
+export interface FieldsetProps extends FieldsetOptions {
   children?: Child;
 }
 
@@ -23,21 +26,28 @@ interface FieldsetLegend {
   isPageHeading?: boolean;
 }
 
-export async function Fieldset({ legend, children, ...props }: FieldsetProps) {
+export async function Fieldset({ children, ...props }: FieldsetProps) {
+  return (
+    <GovUKFieldset
+      {...await renderChildFragment(children)}
+      {...await fieldsetOptions(props)}
+    />
+  );
+}
+
+export async function fieldsetOptions(props: FieldsetOptions | undefined) {
+  if (!props) return;
+  let { legend, ...rest } = props;
+
   if (isJsxChild(legend)) {
     legend = { content: legend };
   }
 
-  return (
-    <GovUKFieldset
-      {...props}
-      {...await renderChildFragment(children)}
-      legend={
-        legend && {
-          ...(legend as any),
-          ...(await renderChildFragment(legend.content)),
-        }
-      }
-    />
-  );
+  return {
+    ...rest,
+    legend: legend && {
+      ...(legend as any),
+      ...(await renderChildFragment(legend.content)),
+    },
+  };
 }

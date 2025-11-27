@@ -6,16 +6,19 @@ import {
   renderHtml,
 } from "../lib/hono-jsx-utils";
 import { compact } from "lodash-es";
+import { FieldsetOptions, fieldsetOptions } from "./Fieldset";
 
 export interface RadiosProps
   extends Omit<
     GovUKRadiosProps,
-    "fieldSet" | "hint" | "errorMessage" | "formGroup" | "items"
+    "fieldset" | "hint" | "errorMessage" | "formGroup" | "items"
   > {
   hint?: Child;
   errorMessage?: Child;
   items: RadioItem[];
   children?: Child;
+
+  fieldset?: FieldsetOptions;
 
   /** Additional options for the form group containing the radios component. **/
   formGroup?: {
@@ -81,6 +84,7 @@ export async function Radios({
   return (
     <GovUKRadios
       {...props}
+      fieldset={await fieldsetOptions(fieldset)}
       items={await mapAsync(
         compact(props.items),
         async ({ content, hint, conditional, ...rest }) => ({

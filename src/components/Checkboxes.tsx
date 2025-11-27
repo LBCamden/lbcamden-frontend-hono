@@ -1,18 +1,24 @@
-import { Child } from "hono/jsx";
+import { Child, isValidElement } from "hono/jsx";
 import { GovUKCheckboxes, type GovUKCheckboxesProps } from "../upstream/govuk";
-import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
+import {
+  renderChildFragment,
+  mapAsync,
+  isJsxChild,
+} from "../lib/hono-jsx-utils";
 import { compact } from "lodash-es";
 import { ValueOfArray } from "../utils/types";
+import { FieldsetOptions, fieldsetOptions } from "./Fieldset";
 
 export interface CheckboxesProps
   extends Omit<
     GovUKCheckboxesProps,
-    "formGroup" | "items" | "hint" | "errorMessage"
+    "formGroup" | "items" | "hint" | "errorMessage" | "fieldset"
   > {
   formGroup?: CheckboxesFormGroup;
   items: (CheckboxesItem | false | null | "")[];
-  hint?: string;
+  hint?: Child;
   errorMessage?: Child;
+  fieldset?: FieldsetOptions;
 }
 
 export interface CheckboxesFormGroup {
@@ -54,7 +60,7 @@ export interface CheckboxesContentItem {
   };
 
   /** Can be used to add a hint to each checkbox item within the checkboxes component. **/
-  hint?: string;
+  hint?: Child;
 
   /** Divider text to separate checkbox items, for example the text `"or"`. **/
   divider?: string;
@@ -84,10 +90,10 @@ export async function Checkboxes(props: CheckboxesProps) {
       const { content, conditional, hint, value, ...rest } = item;
       return {
         ...rest,
-        hint: hint as any,
-        value: value as any,
-        ...(await renderChildFragment(content)),
+        hint: await renderChildFragment(hint),
+        value: String(value),
         conditional: await renderChildFragment(conditional),
+        ...(await renderChildFragment(content)),
       };
     }
   );
@@ -96,8 +102,9 @@ export async function Checkboxes(props: CheckboxesProps) {
     <GovUKCheckboxes
       {...props}
       errorMessage={await renderChildFragment(props.errorMessage)}
-      hint={props.hint as any}
+      hint={await renderChildFragment(props.hint)}
       items={items}
+      fieldset={await fieldsetOptions(props.fieldset)}
       formGroup={
         props.formGroup && {
           ...props.formGroup,
@@ -113,4 +120,18 @@ type GovUKCheckboxesItem = ValueOfArray<GovUKCheckboxesProps["items"]>;
 
 function isDivider(x: any): x is { divider: string } {
   return "divider" in x && typeof x.divider === "string";
+}
+
+async function handleLegend(
+  legend?: NonNullable<CheckboxesProps["fieldset"]>["legend"]
+) {
+  if (!legend) return;
+  if (isJsxChild(legend)) {
+    return renderChildFragment(legend);
+  }
+
+  return {
+    ...legend,
+    content: await renderChildFragment(legend.content),
+  };
 }
