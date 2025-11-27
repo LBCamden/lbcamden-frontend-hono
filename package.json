@@ -1,8 +1,11 @@
 {
-  "name": "lbcamden-frontend-hono",
+  "name": "@lbcamden/frontend-hono",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.0.0",
   "main": "index.js",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
