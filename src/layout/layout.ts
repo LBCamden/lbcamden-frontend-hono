@@ -6,6 +6,10 @@ import { FC } from "hono/jsx";
 export interface PageLayoutProps {
   assetPath?: string;
   assetUrl?: string;
+  metaDescription?: string
+  cspNonce?: string
+  bodyClasses?: string
+  htmlClasses?: string
 
   headIcons?: string;
   head?: string;

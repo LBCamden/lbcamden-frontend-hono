@@ -1,111 +1,107 @@
-{% extends "node_modules/lbcamden-frontend/lbcamden/template.njk" %}
+{% from "node_modules/govuk-frontend/dist/govuk/components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "node_modules/lbcamden-frontend/lbcamden/components/header/macro.njk" import LBCamdenHeader -%}
+{% from "node_modules/lbcamden-frontend/lbcamden/components/footer/macro.njk" import LBCamdenFooter -%}
+{% from "node_modules/lbcamden-frontend/lbcamden/components/card/macro.njk" import LBCamdenCard -%}
+{% from "node_modules/lbcamden-frontend/lbcamden/components/search/macro.njk" import LBCamdenSearch -%}
 
 {%- set assetUrl = params.assetUrl -%}
 {%- set assetPath = params.assetPath -%}
 {%- set htmlClasses = params.htmlClasses -%}
+{%- set cspNonce = params.cspNonce -%}
+{%- set bodyClasses = params.bodyClasses -%}
+{%- set mainClasses = params.mainClasses -%}
 
-{% block headIcons %}
-{% if params.headIcons %}
-{{params.headIcons|safe}}
-{% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
+{# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
+{%- set assetUrl = assetUrl | default(assetPath) -%}
+<!DOCTYPE html>
+<html lang="{{ htmlLang | default('en') }}" class="govuk-template {{ htmlClasses }}">
+<head>
 
-{% block pageTitle %}
-{% if params.pageTitle %}
-{{params.pageTitle|safe}}
-{% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
+  <meta charset="utf-8">
+  <title{% if pageTitleLang %} lang="{{ pageTitleLang }}"{% endif %}>{{ params.pageTitle }}</title>
+  <meta name="description" content="{{ params.metaDescription }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  {# @todo - experiment with themes and colours #}
+  <meta name="theme-color" content="{{ themeColor | default('#101812') }}">
+  {# Ensure that older IE versions always render with the correct rendering engine #}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-{% block head %}
-{% if params.head %}
-{{params.head|safe}}
-{% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
+    {% if params.headIcons %}
+    {{params.headIcons|safe}}
+    {% else %}
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48"
+          href="{{ assetPath | default('/assets') }}/images/favicons/favicon.ico"
+          type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{ assetPath | default('/assets') }}/images/favicons/apple-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="{{ assetPath | default('/assets') }}/images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" href="{{ assetPath | default('/assets') }}/images/favicons/apple-icon.png">
+    {% endif %}
 
-{% block bodyStart %}
+  {% if params.head %}
+  {{params.head|safe}}
+  {% endif %}
+  {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
+  {# image url needs to be absolute e.g. http://wwww.domain.com/.../govuk-opengraph-image.png #}
+  <meta property="og:image" content="{{ assetUrl | default('/assets') }}/images/ms-icon-310x310.png">
+</head>
+<body
+  class="govuk-template__body {{ bodyClasses }}" {%- for attribute, value in bodyAttributes %} {{ attribute }}="{{ value }}"{% endfor %}
+>
+<script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled')</script>
 <script{% if cspNonce %} nonce="{{ cspNonce }}"{% endif %}>if ('noModule' in HTMLScriptElement.prototype) document.body.classList.add("govuk-frontend-supported")</script>
 {% if params.bodyStart %}
 {{params.bodyStart|safe}}
-{% else %}
-{{ super() }}
 {% endif %}
-{% endblock %}
 
-
-{% block skipLink %}
 {% if params.skipLink %}
 {{params.skipLink|safe}}
 {% else %}
-{{ super() }}
+{{ govukSkipLink({
+  href: '#main-content',
+  text: 'Skip to main content'
+}) }}
 {% endif %}
-{% endblock %}
 
-{% block header %}
 {% if params.header %}
 {{params.header|safe}}
 {% else %}
-{{ super() }}
+  {{ LBCamdenHeader() }}
 {% endif %}
-{% endblock %}
 
-{% block main %}
 {% if params.main %}
 {{params.main|safe}}
 {% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
+<main class="govuk-main-wrapper {{ containerClasses }}" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
+  {% if params.beforeContent %}
+  {{params.beforeContent|safe}}
+  {% endif %}
+  <div class="{{ mainClasses }}" id="main-content">
+    {% if params.content %}
+    {{params.content|safe}}
+    {% endif %}
+  </div>
 
-{% block beforeContent %}
-{% if params.beforeContent %}
-{{params.beforeContent|safe}}
-{% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
-
-{% block content %}
-{% if params.content %}
-{{params.content|safe}}
-{% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
-
-{% block postContent %}
-{% if params.postContent %}
-{{params.postContent|safe}}
-{% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
-
-{% block afterContent %}
+  {% if params.postContent %}
+  {{params.postContent|safe}}
+  {% endif %}
+</main>
 {% if params.afterContent %}
 {{params.afterContent|safe}}
-{% else %}
-{{ super() }}
 {% endif %}
-{% endblock %}
+{% endif %}
 
-{% block footer %}
 {% if params.footer %}
 {{params.footer|safe}}
 {% else %}
-{{ super() }}
-{% endif %}
-{% endblock %}
+{{ LBCamdenFooter({
 
-{% block bodyEnd %}
+}) }}
+{% endif %}
+
 {% if params.bodyEnd %}
 {{params.bodyEnd|safe}}
-{% else %}
-{{ super() }}
 {% endif %}
-{% endblock %}
+</body>
+</html>
