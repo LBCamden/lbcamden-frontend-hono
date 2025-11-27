@@ -14,8 +14,12 @@ export function getAssetPaths(opts: AssetPathOpts) {
 
   return {
     assetPath: opts.isDev ? opts.devAssetPath : opts.prodAssetPath,
-    head: <link rel="stylesheet" href={css} />,
-    bodyEnd: <script type="module" src={js} />,
+    head: (
+      <>
+        <link rel="stylesheet" href={css} />
+        <script type="module" src={js} />
+      </>
+    ),
   };
 }
 
