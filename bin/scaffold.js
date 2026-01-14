@@ -26,8 +26,6 @@ scaffoldComponents({
 function getOpts() {
   const [arg] = process.argv.slice(2);
 
-  console.log(process.argv);
-
   if (arg === "--all") {
     return {};
   }
