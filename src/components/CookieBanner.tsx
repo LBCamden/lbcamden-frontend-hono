@@ -19,6 +19,8 @@ interface CookieBannerMessage {
 
   /** The buttons and links that you want to display in the message. `actions` defaults to `"button"` unless you set `href`, which renders the action as a link. **/
   actions?: Array<CookieBannerAction>;
+
+  role?: string;
 }
 
 interface CookieBannerAction {
