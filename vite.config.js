@@ -32,13 +32,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: [
-        "vite",
-        "@hono/vite-dev-server",
-        "hono/html",
-        "hono/jsx",
-        "path",
-      ],
+      external: ["vite", "@hono/vite-dev-server", /^hono\//, "path"],
     },
     outDir: "dist",
     emptyOutDir: true,
