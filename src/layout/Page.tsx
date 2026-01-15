@@ -83,7 +83,7 @@ export async function Page(baseProps: PageProps) {
   );
 }
 
-interface PageRendererConfig extends Omit<SharedPageConfig, "header"> {
+interface PageRendererConfig extends SharedPageConfig {
   titleSuffix?: string;
   mainLayout?: FC<PropsWithChildren>;
   headerItems?: HeaderNavItem[];
@@ -119,11 +119,13 @@ export function camdenPageRenderer({
         metaDescription={metaDescription ?? conf.metaDescription}
         footer={<Footer {...defaultFooterNavItems} {...footerItems} />}
         header={
-          <Header
-            navigation={headerItems}
-            homepageUrl="https://www.camden.gov.uk"
-            search={{ action: "https://www.camden.gov.uk/search", name: "q" }}
-          />
+          conf.header ?? (
+            <Header
+              navigation={headerItems}
+              homepageUrl="https://www.camden.gov.uk"
+              search={{ action: "https://www.camden.gov.uk/search", name: "q" }}
+            />
+          )
         }
       >
         <Layout>{children}</Layout>
