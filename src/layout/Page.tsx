@@ -95,9 +95,15 @@ interface PageRendererConfig extends Omit<SharedPageConfig, "header"> {
 export function camdenPageRenderer({
   titleSuffix = "Camden Council",
   mainLayout: Layout = ({ children }) => (
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds-from-desktop">{children}</div>
-    </div>
+    <main class="govuk-main-wrapper" role="main">
+      {conf.beforeContent}
+
+      <div class={conf.mainClasses} id="main-content">
+        {children}
+      </div>
+
+      {conf.afterContent}
+    </main>
   ),
   headerItems = defaultHeaderItems,
   footerItems,
@@ -125,9 +131,8 @@ export function camdenPageRenderer({
             search={{ action: "https://www.camden.gov.uk/search", name: "q" }}
           />
         }
-      >
-        <Layout>{children}</Layout>
-      </Page>
+        main={<Layout>{children}</Layout>}
+      />
     ),
     {
       docType: "<!DOCTYPE html>",
