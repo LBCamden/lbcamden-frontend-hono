@@ -6,6 +6,7 @@ import { jsxRenderer } from "hono/jsx-renderer";
 import { LBCamdenHeader } from "../upstream";
 import { Header, HeaderNavItem } from "../components/Header";
 import { Footer, FooterProps } from "../components";
+import { tryGetContext } from "hono/context-storage";
 
 export interface SharedPageConfig {
   assetPath?: string;
@@ -67,6 +68,7 @@ export async function Page(baseProps: PageProps) {
   return (
     <LBCamdenTemplate
       {...props}
+      cspNonce={tryGetContext<any>()?.var.secureHeadersNonce}
       headIcons={await renderHtml(headIcons)}
       head={await renderHtml(head)}
       bodyStart={await renderHtml(bodyStart)}
@@ -138,7 +140,7 @@ export function camdenPageRenderer({
     ),
     {
       docType: "<!DOCTYPE html>",
-    }
+    },
   );
 }
 
