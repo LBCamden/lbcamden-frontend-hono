@@ -2,14 +2,14 @@ import { Child } from "hono/jsx";
 import { GovUKSelect, type GovUKSelectProps } from "../upstream/govuk";
 import { HasEmbeddedContentArray } from "../types";
 import { renderChildFragment, mapAsync } from "../lib/hono-jsx-utils";
+import { labelOpts, LabelOpts } from "./Label";
 
-export interface SelectProps
-  extends Omit<
-    GovUKSelectProps,
-    "hint" | "label" | "errorMessage" | "fieldset" | "formGroup"
-  > {
+export interface SelectProps extends Omit<
+  GovUKSelectProps,
+  "hint" | "label" | "errorMessage" | "fieldset" | "formGroup"
+> {
   hint?: Child;
-  label?: Child;
+  label?: LabelOpts;
   errorMessage?: Child;
   formGroup?: {
     /** Classes to add to the form group (for example to show error state for the whole group). **/
@@ -36,7 +36,7 @@ export async function Select({
   return (
     <GovUKSelect
       {...props}
-      label={await renderChildFragment(label)}
+      label={await labelOpts(label)}
       hint={await renderChildFragment(hint)}
       errorMessage={await renderChildFragment(errorMessage)}
       formGroup={
