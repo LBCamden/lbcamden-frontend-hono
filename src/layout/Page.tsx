@@ -109,6 +109,7 @@ export function camdenPageRenderer({
   ),
   headerItems = defaultHeaderItems,
   footerItems,
+  footer,
   ...conf
 }: PageRendererConfig) {
   return jsxRenderer(
@@ -125,7 +126,9 @@ export function camdenPageRenderer({
         {...conf}
         pageTitle={title ? `${title} - ${titleSuffix}` : titleSuffix}
         metaDescription={metaDescription ?? conf.metaDescription}
-        footer={<Footer {...defaultFooterNavItems} {...footerItems} />}
+        footer={
+          footer ?? <Footer {...defaultFooterNavItems(conf)} {...footerItems} />
+        }
         header={
           conf.header ?? (
             <Header
