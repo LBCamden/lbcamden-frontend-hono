@@ -1,3 +1,5 @@
+import { tryGetContext } from "hono/context-storage";
+
 export interface AssetPathOpts {
   prodAssetPath: string;
   devAssetPath: string;
@@ -8,6 +10,7 @@ export interface AssetPathOpts {
 }
 
 export function getAssetPaths(opts: AssetPathOpts) {
+  const cspNonce = tryGetContext<any>()?.var.secureHeadersNonce;
   const assetBase = (opts.isDev ? opts.devAssetPath : opts.prodAssetPath) + "/";
   const js = assetBase + replaceExt(opts.jsMain, opts.isDev);
   const css = assetBase + replaceExt(opts.styleMain, opts.isDev);
@@ -16,8 +19,8 @@ export function getAssetPaths(opts: AssetPathOpts) {
     assetPath: opts.isDev ? opts.devAssetPath : opts.prodAssetPath,
     head: (
       <>
-        <link rel="stylesheet" href={css} />
-        <script type="module" src={js} />
+        <link rel="stylesheet" href={css} nonce={cspNonce} />
+        <script type="module" src={js} nonce={cspNonce} />
       </>
     ),
   };
