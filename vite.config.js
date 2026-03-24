@@ -1,5 +1,6 @@
+import fs from "fs";
 import { defineConfig } from "vite";
-import nunjucksLoader from "vite-plugin-nunjucks-loader";
+import nunjucksLoader from "@lbcamden/vite-plugin-nunjucks-loader";
 
 export default defineConfig({
   define: {
