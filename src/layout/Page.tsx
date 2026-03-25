@@ -1,22 +1,22 @@
 import { Child, FC, PropsWithChildren } from "hono/jsx";
 import LBCamdenTemplate from "./layout";
 import { renderHtml } from "../lib/hono-jsx-utils";
-import { AssetPathOpts, getAssetPaths } from "../utils/asset-paths";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { LBCamdenHeader } from "../upstream";
 import { Header, HeaderNavItem } from "../components/Header";
 import { Footer, FooterProps } from "../components";
-import { tryGetContext } from "hono/context-storage";
+import { getContext, tryGetContext } from "hono/context-storage";
+import { Context, Env, MiddlewareHandler } from "hono";
 
 export interface SharedPageConfig {
   assetPath?: string;
   assetUrl?: string;
   metaDescription?: string;
   assetConf?: AssetPathOpts;
-  cspNonce?: string;
   mainClasses?: string;
   bodyClasses?: string;
   htmlClasses?: string;
+  cacheBreaker?: string;
 
   headIcons?: Child;
   head?: Child;
@@ -30,6 +30,11 @@ export interface SharedPageConfig {
   bodyEnd?: Child;
 }
 
+export interface AssetPathOpts {
+  jsMain: string;
+  cssMain: string;
+}
+
 export interface PageProps extends SharedPageConfig {
   pageTitle?: string;
   main?: Child;
@@ -37,17 +42,6 @@ export interface PageProps extends SharedPageConfig {
 }
 
 export async function Page(baseProps: PageProps) {
-  if (baseProps.assetConf) {
-    const { assetPath, head } = getAssetPaths(baseProps.assetConf);
-    baseProps.assetPath = assetPath;
-    baseProps.head = (
-      <>
-        {head}
-        {baseProps.head}
-      </>
-    );
-  }
-
   const {
     assetConf,
     headIcons,
@@ -62,15 +56,33 @@ export async function Page(baseProps: PageProps) {
     footer,
     bodyEnd,
     children,
+    cacheBreaker,
     ...props
   } = baseProps;
+
+  const { script, style } = getAssetRefs(assetConf);
+  const cspNonce = tryGetContext<any>()?.var.secureHeadersNonce;
 
   return (
     <LBCamdenTemplate
       {...props}
       cspNonce={tryGetContext<any>()?.var.secureHeadersNonce}
       headIcons={await renderHtml(headIcons)}
-      head={await renderHtml(head)}
+      head={await renderHtml(
+        <>
+          {head}
+          <script
+            type="module"
+            src={cacheBreak(script, cacheBreaker)}
+            nonce={cspNonce}
+          />
+          <link
+            rel="stylesheet"
+            href={cacheBreak(style, cacheBreaker)}
+            nonce={cspNonce}
+          />
+        </>,
+      )}
       bodyStart={await renderHtml(bodyStart)}
       skipLink={await renderHtml(skipLink)}
       header={await renderHtml(header)}
@@ -85,7 +97,7 @@ export async function Page(baseProps: PageProps) {
   );
 }
 
-interface PageRendererConfig extends SharedPageConfig {
+export interface PageRendererConfig extends SharedPageConfig {
   titleSuffix?: string;
   mainLayout?: FC<PropsWithChildren>;
   headerItems?: HeaderNavItem[];
@@ -94,57 +106,65 @@ interface PageRendererConfig extends SharedPageConfig {
   accessibilityStatementUrl?: string;
 }
 
-export function camdenPageRenderer({
-  titleSuffix = "Camden Council",
-  mainLayout: Layout = ({ children }) => (
-    <main class="govuk-main-wrapper" role="main">
-      {conf.beforeContent}
-
-      <div class={conf.mainClasses} id="main-content">
-        {children}
-      </div>
-
-      {conf.afterContent}
-    </main>
-  ),
-  headerItems = defaultHeaderItems,
-  footerItems,
-  footer,
-  ...conf
-}: PageRendererConfig) {
+export function camdenPageRenderer<E extends Env>(
+  confSrc: PageRendererConfig | ((context: Context<E>) => PageRendererConfig),
+) {
   return jsxRenderer(
-    ({ children, title, metaDescription }) => (
-      <Page
-        mainClasses="govuk-width-container"
-        assetConf={{
-          prodAssetPath: "",
-          devAssetPath: "",
-          isDev: false,
-          jsMain: "lbcamden-frontend.min.js",
-          styleMain: "lbcamden-frontend.min.css",
-        }}
-        {...conf}
-        pageTitle={title ? `${title} - ${titleSuffix}` : titleSuffix}
-        metaDescription={metaDescription ?? conf.metaDescription}
-        footer={
-          footer ?? <Footer {...defaultFooterNavItems(conf)} {...footerItems} />
-        }
-        header={
-          conf.header ?? (
-            <Header
-              navigation={headerItems}
-              homepageUrl="https://www.camden.gov.uk"
-              search={{ action: "https://www.camden.gov.uk/search", name: "q" }}
-            />
-          )
-        }
-        main={<Layout>{children}</Layout>}
-      />
-    ),
+    ({ children, title, metaDescription }) => {
+      const {
+        titleSuffix = "Camden Council",
+        mainLayout: Layout = ({ children }) => (
+          <main class="govuk-main-wrapper" role="main">
+            {conf.beforeContent}
+
+            <div class={conf.mainClasses} id="main-content">
+              {children}
+            </div>
+
+            {conf.afterContent}
+          </main>
+        ),
+        headerItems = defaultHeaderItems,
+        footerItems,
+        footer,
+        ...conf
+      } = typeof confSrc === "function" ? confSrc(getContext()) : confSrc;
+
+      return (
+        <Page
+          mainClasses="govuk-width-container"
+          assetConf={{
+            jsMain: "lbcamden-frontend.min.js",
+            cssMain: "lbcamden-frontend.min.css",
+          }}
+          {...conf}
+          pageTitle={title ? `${title} - ${titleSuffix}` : titleSuffix}
+          metaDescription={metaDescription ?? conf.metaDescription}
+          footer={
+            footer ?? (
+              <Footer {...defaultFooterNavItems(conf)} {...footerItems} />
+            )
+          }
+          header={
+            conf.header ?? (
+              <Header
+                navigation={headerItems}
+                homepageUrl="https://www.camden.gov.uk"
+                search={{
+                  action: "https://www.camden.gov.uk/search",
+                  name: "q",
+                }}
+              />
+            )
+          }
+          main={<Layout>{children}</Layout>}
+        />
+      );
+    },
     {
       docType: "<!DOCTYPE html>",
     },
-  );
+  ) as MiddlewareHandler<E>;
 }
 
 const defaultFooterNavItems = ({
@@ -353,3 +373,22 @@ const defaultHeaderItems: HeaderNavItem[] = [
     ],
   },
 ];
+
+function getAssetRefs(opts?: AssetPathOpts) {
+  if (opts) {
+    return {
+      script: opts.jsMain,
+      style: opts.cssMain,
+    };
+  } else {
+    return {
+      script: "/lbcamden-frontend.min.js",
+      style: "/lbcamden-frontend.min.css",
+    };
+  }
+}
+
+function cacheBreak(url: string, breaker?: string) {
+  if (!breaker) return url;
+  return `${url}?v=${breaker}`;
+}
