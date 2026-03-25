@@ -20,6 +20,7 @@
     "build": "vite build && tsc",
     "codegen": "tsx bin/codegen.js",
     "scaffold": "tsx bin/scaffold.js",
+    "typecheck": "pnpm tsc --noEmit",
     "storybook": "storybook dev -p 6006"
   },
   "author": "",
