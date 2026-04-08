@@ -39,14 +39,14 @@ importers:
         specifier: ^22.19.15
         version: 22.19.15
       govuk-frontend:
-        specifier: ^5.14.0
-        version: 5.14.0
+        specifier: ~5.12.0
+        version: 5.12.0
       hono:
         specifier: ^4.12.9
         version: 4.12.9
       lbcamden-frontend:
-        specifier: ^1.0.7
-        version: 1.0.7
+        specifier: github:lbcamden/lbcamden-frontend#file-upload&path:package
+        version: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5#path:package
       lodash-es:
         specifier: ^4.17.23
         version: 4.17.23
@@ -1021,8 +1021,8 @@ packages:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
 
-  govuk-frontend@5.14.0:
-    resolution: {integrity: sha512-MgfaXswIM6KpXS2T5gltEnzgVLgfM3UoE9+rYkhBiR0suaJ8Let31VZXQZqz9QhiPDbv28fW1nRjIyLujfZIBA==}
+  govuk-frontend@5.12.0:
+    resolution: {integrity: sha512-gNr/UVDoORVOqVKTC9i9HOKKPeM4IDTAqtnd3t6U8LQibEr+8Q+FB7Id0u/MfR/5mqPfenG/+VGLW96vJXok/g==}
     engines: {node: '>= 4.2.0'}
 
   has-flag@4.0.0:
@@ -1091,8 +1091,9 @@ packages:
     resolution: {integrity: sha512-iZ8Bdb84lWRuGHamRXFyML07r21pcwBrLkHEuHgEY5UbCouBwv7ECknDRKzsQIXMiqpPymqtIf8TC/shYKB5rw==}
     engines: {node: '>=12.0.0'}
 
-  lbcamden-frontend@1.0.7:
-    resolution: {integrity: sha512-ivQuidXe+Jav78MevKROjMw/VRKZDR5LoyqNXK0SHTIoA7gd//4LlIe8T+Trs0JCGw+zAQlMYsxWId9pbOJlSg==}
+  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5#path:package:
+    resolution: {path: package, tarball: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5}
+    version: 1.0.7
     engines: {node: '>= 4.2.0'}
 
   lodash-es@4.17.23:
@@ -2191,7 +2192,7 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  govuk-frontend@5.14.0: {}
+  govuk-frontend@5.12.0: {}
 
   has-flag@4.0.0: {}
 
@@ -2251,7 +2252,7 @@ snapshots:
 
   jsdoc-type-pratt-parser@4.8.0: {}
 
-  lbcamden-frontend@1.0.7: {}
+  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5#path:package: {}
 
   lodash-es@4.17.23: {}
 
