@@ -28,7 +28,7 @@ importers:
         version: 8.6.18(storybook@8.6.18)
       '@storybook/html-vite':
         specifier: ^10.3.3
-        version: 10.3.3(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))
+        version: 10.3.5(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))
       '@storybook/test':
         specifier: ^8.6.15
         version: 8.6.15(storybook@8.6.18)
@@ -46,7 +46,7 @@ importers:
         version: 4.12.9
       lbcamden-frontend:
         specifier: github:lbcamden/lbcamden-frontend#file-upload&path:package
-        version: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5#path:package
+        version: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/a84954a1ded16349b438fbeb611c54f3f26b7e6f#path:package
       lodash-es:
         specifier: ^4.17.23
         version: 4.17.23
@@ -641,10 +641,10 @@ packages:
       react-dom:
         optional: true
 
-  '@storybook/builder-vite@10.3.3':
-    resolution: {integrity: sha512-awspKCTZvXyeV3KabL0id62mFbxR5u/5yyGQultwCiSb2/yVgBfip2MAqLyS850pvTiB6QFVM9deOyd2/G/bEA==}
+  '@storybook/builder-vite@10.3.5':
+    resolution: {integrity: sha512-i4KwCOKbhtlbQIbhm53+Kk7bMnxa0cwTn1pxmtA/x5wm1Qu7FrrBQV0V0DNjkUqzcSKo1CjspASJV/HlY0zYlw==}
     peerDependencies:
-      storybook: ^10.3.3
+      storybook: ^10.3.5
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
 
   '@storybook/components@8.6.18':
@@ -660,12 +660,12 @@ packages:
       prettier:
         optional: true
 
-  '@storybook/csf-plugin@10.3.3':
-    resolution: {integrity: sha512-Utlh7zubm+4iOzBBfzLW4F4vD99UBtl2Do4edlzK2F7krQIcFvR2ontjAE8S1FQVLZAC3WHalCOS+Ch8zf3knA==}
+  '@storybook/csf-plugin@10.3.5':
+    resolution: {integrity: sha512-qlEzNKxOjq86pvrbuMwiGD/bylnsXk1dg7ve0j77YFjEEchqtl7qTlrXvFdNaLA89GhW6D/EV6eOCu/eobPDgw==}
     peerDependencies:
       esbuild: '*'
       rollup: '*'
-      storybook: ^10.3.3
+      storybook: ^10.3.5
       vite: '*'
       webpack: '*'
     peerDependenciesMeta:
@@ -686,15 +686,15 @@ packages:
   '@storybook/global@5.0.0':
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  '@storybook/html-vite@10.3.3':
-    resolution: {integrity: sha512-opmKZmzIsSpAL74lEe+1lnlwLlCVwHg3eTcsIiss0YHRAkD8PZNX8qXz+7mylZINh19rVzolho0B4y6AGfSBAA==}
+  '@storybook/html-vite@10.3.5':
+    resolution: {integrity: sha512-uf8iwUMyPFpj/CGquxV/Bj+HL81DeaRcDQTueJ8Mxph00F8VYUSp4/brvPCzaS5c4DC8k+W1dQvLy5VUptxGJg==}
     peerDependencies:
-      storybook: ^10.3.3
+      storybook: ^10.3.5
 
-  '@storybook/html@10.3.3':
-    resolution: {integrity: sha512-GwzWjjxUFR3dvzX06UHAwq/LjiaPIYRdu5T+GE5AJD7UYaKuksSysT1yVfUdRpU2LExOdkoMZpogSSzfHjgpGg==}
+  '@storybook/html@10.3.5':
+    resolution: {integrity: sha512-htbHaCjCMwVTFihnnjieGWFG10ixEVTKNGY7jkgp6ztH50fX5kp8N4F06eUMaFDPW+U7gcUiLIb2fv+oNIYImA==}
     peerDependencies:
-      storybook: ^10.3.3
+      storybook: ^10.3.5
 
   '@storybook/html@8.6.18':
     resolution: {integrity: sha512-7yjb09rf7wP4hlVlirVPe+Jjo6kRsr4zEhuHlLM97Jf5Ojf7LH+vtvV9M3F7zs50lm9jTNBd45oWfTX8T7d2mw==}
@@ -1091,8 +1091,8 @@ packages:
     resolution: {integrity: sha512-iZ8Bdb84lWRuGHamRXFyML07r21pcwBrLkHEuHgEY5UbCouBwv7ECknDRKzsQIXMiqpPymqtIf8TC/shYKB5rw==}
     engines: {node: '>=12.0.0'}
 
-  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5#path:package:
-    resolution: {path: package, tarball: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5}
+  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/a84954a1ded16349b438fbeb611c54f3f26b7e6f#path:package:
+    resolution: {path: package, tarball: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/a84954a1ded16349b438fbeb611c54f3f26b7e6f}
     version: 1.0.7
     engines: {node: '>= 4.2.0'}
 
@@ -1742,9 +1742,9 @@ snapshots:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
 
-  '@storybook/builder-vite@10.3.3(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))':
+  '@storybook/builder-vite@10.3.5(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))':
     dependencies:
-      '@storybook/csf-plugin': 10.3.3(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))
+      '@storybook/csf-plugin': 10.3.5(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))
       storybook: 8.6.18
       ts-dedent: 2.2.0
       vite: 6.4.1(@types/node@22.19.15)(tsx@4.21.0)
@@ -1776,7 +1776,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@storybook/csf-plugin@10.3.3(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))':
+  '@storybook/csf-plugin@10.3.5(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))':
     dependencies:
       storybook: 8.6.18
       unplugin: 2.3.11
@@ -1792,10 +1792,10 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/html-vite@10.3.3(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))':
+  '@storybook/html-vite@10.3.5(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))':
     dependencies:
-      '@storybook/builder-vite': 10.3.3(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))
-      '@storybook/html': 10.3.3(storybook@8.6.18)
+      '@storybook/builder-vite': 10.3.5(esbuild@0.25.12)(rollup@4.60.0)(storybook@8.6.18)(vite@6.4.1(@types/node@22.19.15)(tsx@4.21.0))
+      '@storybook/html': 10.3.5(storybook@8.6.18)
       storybook: 8.6.18
     transitivePeerDependencies:
       - esbuild
@@ -1803,7 +1803,7 @@ snapshots:
       - vite
       - webpack
 
-  '@storybook/html@10.3.3(storybook@8.6.18)':
+  '@storybook/html@10.3.5(storybook@8.6.18)':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 8.6.18
@@ -2252,7 +2252,7 @@ snapshots:
 
   jsdoc-type-pratt-parser@4.8.0: {}
 
-  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/cf8a7191c286a6d32373bf87548f7d5b713d94e5#path:package: {}
+  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/a84954a1ded16349b438fbeb611c54f3f26b7e6f#path:package: {}
 
   lodash-es@4.17.23: {}
 
