@@ -1,7 +1,7 @@
-import "./init"
-import "lbcamden-frontend/dist/lbcamden-frontend-1.0.2.min.css"
+import "./init";
+import "lbcamden-frontend/dist/lbcamden-frontend-1.0.7.min.css";
 
-import type { Preview } from '@storybook/html'
+import type { Preview } from "@storybook/html";
 
 const preview: Preview = {
   parameters: {
