@@ -1,6 +1,7 @@
 import { Child } from "hono/jsx";
 import { GovUKFileUpload, type GovUKFileUploadProps } from "../upstream/govuk";
 import { renderChildFragment, renderHtml } from "../lib/hono-jsx-utils";
+import { LabelOpts, labelOpts } from "./Label";
 
 export interface FileUploadProps
   extends Omit<
@@ -8,7 +9,7 @@ export interface FileUploadProps
     "formGroup" | "label" | "hint" | "errorMessage" | "multipleFilesChosenText"
   > {
   /** The label used by the file upload component. **/
-  label: Child;
+  label: LabelOpts | Child;
 
   /** Can be used to add a hint to the file upload component. **/
   hint?: Child;
@@ -46,7 +47,7 @@ export async function FileUpload({
   return (
     <GovUKFileUpload
       {...props}
-      label={await renderChildFragment(label)}
+      label={await labelOpts(label)}
       hint={await renderChildFragment(hint)}
       errorMessage={await renderChildFragment(errorMessage)}
       formGroup={
@@ -57,7 +58,7 @@ export async function FileUpload({
         }
       }
       multipleFilesChosenText={await renderChildFragment(
-        multipleFilesChosenText
+        multipleFilesChosenText,
       )}
     />
   );
