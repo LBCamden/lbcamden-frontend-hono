@@ -39,6 +39,10 @@
     <link rel="apple-touch-icon" href="{{ assetPath | default('/assets') }}/images/favicons/apple-icon.png">
     {% endif %}
 
+  <style nonce="{{cspNonce}}">
+    .govuk-template { background-color: #4d5051 !important; }
+  </style>
+
   {% if params.head %}
   {{params.head|safe}}
   {% endif %}
