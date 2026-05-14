@@ -16,7 +16,7 @@ export async function ServiceHeader(props: ServiceHeaderProps) {
             <div class="govuk-grid-column-one-third-from-desktop">
               <div class="lbcamden-header__logo">
                 <a
-                  href="https://wwww.camden.gov.uk"
+                  href="https://www.camden.gov.uk"
                   class="lbcamden-header__link"
                 >
                   <svg
