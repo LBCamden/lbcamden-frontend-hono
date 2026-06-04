@@ -1,4 +1,6 @@
 import "./init";
+
+// @ts-ignore
 import "lbcamden-frontend/dist/lbcamden-frontend-1.0.8.min.css";
 
 import type { Preview } from "@storybook/html";

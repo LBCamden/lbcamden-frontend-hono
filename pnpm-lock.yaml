@@ -46,7 +46,7 @@ importers:
         version: 4.12.9
       lbcamden-frontend:
         specifier: github:lbcamden/lbcamden-frontend#file-upload&path:package
-        version: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/0e6952ae68db04a7185a5bf4321e3730120e3595#path:package
+        version: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/6a35ad3c284e1983eed7d689d751076d76c4fbff#path:package
       lodash-es:
         specifier: ^4.17.23
         version: 4.17.23
@@ -1061,8 +1061,8 @@ packages:
     resolution: {integrity: sha512-iZ8Bdb84lWRuGHamRXFyML07r21pcwBrLkHEuHgEY5UbCouBwv7ECknDRKzsQIXMiqpPymqtIf8TC/shYKB5rw==}
     engines: {node: '>=12.0.0'}
 
-  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/0e6952ae68db04a7185a5bf4321e3730120e3595#path:package:
-    resolution: {path: package, tarball: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/0e6952ae68db04a7185a5bf4321e3730120e3595}
+  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/6a35ad3c284e1983eed7d689d751076d76c4fbff#path:package:
+    resolution: {path: package, tarball: https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/6a35ad3c284e1983eed7d689d751076d76c4fbff}
     version: 1.0.8
     engines: {node: '>= 4.2.0'}
 
@@ -2189,7 +2189,7 @@ snapshots:
 
   jsdoc-type-pratt-parser@4.8.0: {}
 
-  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/0e6952ae68db04a7185a5bf4321e3730120e3595#path:package: {}
+  lbcamden-frontend@https://codeload.github.com/lbcamden/lbcamden-frontend/tar.gz/6a35ad3c284e1983eed7d689d751076d76c4fbff#path:package: {}
 
   lodash-es@4.17.23: {}
 
