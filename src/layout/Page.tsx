@@ -1,12 +1,10 @@
 import { Child, FC, PropsWithChildren } from "hono/jsx";
-import LBCamdenTemplate from "./layout";
-import { renderHtml } from "../lib/hono-jsx-utils";
-import { jsxRenderer } from "hono/jsx-renderer";
-import { LBCamdenHeader } from "../upstream";
+import { jsxRenderer, useRequestContext } from "hono/jsx-renderer";
 import { Header, HeaderNavItem } from "../components/Header";
 import { Footer, FooterProps } from "../components";
-import { getContext, tryGetContext } from "hono/context-storage";
 import { Context, Env, MiddlewareHandler } from "hono";
+import { html } from "hono/html";
+import { GovUKSkipLink, LBCamdenFooter, LBCamdenHeader } from "../upstream";
 
 export interface SharedPageConfig {
   assetPath?: string;
@@ -56,44 +54,95 @@ export async function Page(baseProps: PageProps) {
     footer,
     bodyEnd,
     children,
+    metaDescription,
+    htmlClasses = "",
+    mainClasses = "",
+    bodyClasses = "",
     cacheBreaker,
-    ...props
+    assetPath = "/assets",
+    pageTitle
   } = baseProps;
 
   const { script, style } = getAssetRefs(assetConf);
-  const cspNonce = tryGetContext<any>()?.var.secureHeadersNonce;
+  const c = useRequestContext()
+  console.log('Page')
+  const cspNonce = c.var.secureHeadersNonce
+  const nonceAttr = cspNonce ? html`nonce="${cspNonce}"` : ""
 
   return (
-    <LBCamdenTemplate
-      {...props}
-      cspNonce={tryGetContext<any>()?.var.secureHeadersNonce}
-      headIcons={await renderHtml(headIcons)}
-      head={await renderHtml(
-        <>
-          {head}
-          <script
-            type="module"
-            src={cacheBreak(script, cacheBreaker)}
-            nonce={cspNonce}
+    <html lang="en" class={`govuk-template ${htmlClasses}`}>
+      <head>
+        <meta charset="utf-8" />
+        <title>{{ pageTitle }}</title>
+
+        <meta name="description" content={metaDescription} />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        <meta name="theme-color" content="{{ themeColor | default('#101812') }}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        {headIcons ?? (
+          <>
+            <link rel="shortcut icon" sizes="16x16 32x32 48x48"
+              href={`${assetPath}/images/favicons/favicon.ico`}
+              type="image/x-icon" />
+            <link rel="apple-touch-icon" sizes="180x180"
+              href={`${assetPath}/images/favicons/apple-icon-180x180.png`} />
+            <link rel="apple-touch-icon" sizes="152x152"
+              href={`${assetPath}/images/favicons/apple-icon-152x152.png`} />
+            <link rel="apple-touch-icon" href={`${assetPath}/images/favicons/apple-icon.png`} />
+          </>
+        )}
+
+        {html`<style ${nonceAttr}>.govuk-template { background-color: #4d5051 !important; }</style>`}
+        <script
+          type="module"
+          src={cacheBreak(script, cacheBreaker)}
+          nonce={cspNonce}
+        />
+        <link
+          rel="stylesheet"
+          href={cacheBreak(style, cacheBreaker)}
+          nonce={cspNonce}
+        />
+        {head}
+
+        <meta property="og:image" content={`${assetPath}/images/ms-icon-310x310.png`} />
+      </head>
+      <body
+        class={`govuk-template__body ${bodyClasses}`}
+      >
+        {html`<script ${nonceAttr}>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled')</script>`}
+        {html`<script ${nonceAttr}>if ('noModule' in HTMLScriptElement.prototype) document.body.classList.add("govuk-frontend-supported")</script>`}
+
+        {bodyStart}
+        {skipLink ?? (
+          <GovUKSkipLink
+            href="#main-content"
+            text="Skip to main content"
+            html="Skip to main content"
           />
-          <link
-            rel="stylesheet"
-            href={cacheBreak(style, cacheBreaker)}
-            nonce={cspNonce}
-          />
-        </>,
-      )}
-      bodyStart={await renderHtml(bodyStart)}
-      skipLink={await renderHtml(skipLink)}
-      header={await renderHtml(header)}
-      main={await renderHtml(main)}
-      beforeContent={await renderHtml(beforeContent)}
-      content={await renderHtml(children)}
-      postContent={await renderHtml(postContent)}
-      afterContent={await renderHtml(afterContent)}
-      footer={await renderHtml(footer)}
-      bodyEnd={await renderHtml(bodyEnd)}
-    />
+        )}
+
+        {header ?? <LBCamdenHeader />}
+        {main ?? (
+          <main class={`govuk-main-wrapper ${mainClasses}`} role="main">
+            {beforeContent}
+
+            <div id="main-content">
+              {children}
+            </div>
+
+            {postContent}
+          </main>
+        )}
+
+        {afterContent}
+
+        {footer ?? <LBCamdenFooter />}
+        {bodyEnd}
+      </body>
+    </html>
   );
 }
 
@@ -111,6 +160,9 @@ export function camdenPageRenderer<E extends Env>(
 ) {
   return jsxRenderer(
     ({ children, title, metaDescription }) => {
+      const c = useRequestContext()
+      console.log('jsx')
+
       const {
         titleSuffix = "Camden Council",
         mainLayout: Layout = ({ children }) => (
@@ -128,7 +180,7 @@ export function camdenPageRenderer<E extends Env>(
         footerItems,
         footer,
         ...conf
-      } = typeof confSrc === "function" ? confSrc(getContext()) : confSrc;
+      } = typeof confSrc === "function" ? confSrc(c) : confSrc;
 
       return (
         <Page
