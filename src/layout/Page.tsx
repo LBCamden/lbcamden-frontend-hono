@@ -65,7 +65,6 @@ export async function Page(baseProps: PageProps) {
 
   const { script, style } = getAssetRefs(assetConf);
   const c = useRequestContext()
-  console.log('Page')
   const cspNonce = c.var.secureHeadersNonce
   const nonceAttr = cspNonce ? html`nonce="${cspNonce}"` : ""
 
@@ -161,7 +160,6 @@ export function camdenPageRenderer<E extends Env>(
   return jsxRenderer(
     ({ children, title, metaDescription }) => {
       const c = useRequestContext()
-      console.log('jsx')
 
       const {
         titleSuffix = "Camden Council",
