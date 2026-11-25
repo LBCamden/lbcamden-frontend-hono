@@ -12,8 +12,8 @@ importers:
         specifier: ^0.19.1
         version: 0.19.1(hono@4.12.9)
       '@lbcamden/vite-plugin-nunjucks-loader':
-        specifier: 0.1.2
-        version: 0.1.2
+        specifier: 0.2.0
+        version: 0.2.0
       '@storybook/addon-essentials':
         specifier: ^8.6.14
         version: 8.6.14(@types/react@19.2.14)(storybook@8.6.18)
@@ -414,8 +414,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@lbcamden/vite-plugin-nunjucks-loader@0.1.2':
-    resolution: {integrity: sha512-oFSFymtqOZJp/OK9/NfqT4GPPa0Jmb4vnHVNNyf7QcRK6yb9EzWUFEyc0vbYTq30o5kE88TjLGtpWHiX2nr8zg==, tarball: https://npm.pkg.github.com/download/@lbcamden/vite-plugin-nunjucks-loader/0.1.2/24073ef8e1701d4738a033d933d53216a41d7ca5}
+  '@lbcamden/vite-plugin-nunjucks-loader@0.2.0':
+    resolution: {integrity: sha512-30H8svyhVIbjHEhpCg4ETkGAll3jg9edmvzcecrxbNMgxGcq9fpA+M5iV48Be9VdpcLwxswUfBt7gnjNbvS7Rw==, tarball: https://npm.pkg.github.com/download/@lbcamden/vite-plugin-nunjucks-loader/0.2.0/508f42b560c7b6408a7cd330b08d3910ad3a0fd2}
 
   '@mdx-js/react@3.1.1':
     resolution: {integrity: sha512-f++rKLQgUVYDAtECQ6fn/is15GkEH9+nZPM3MS0RcxVqoTfawHvDlSCH7JbMhAM6uJ32v3eXLvLmLvjGu7PTQw==}
@@ -1509,7 +1509,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@lbcamden/vite-plugin-nunjucks-loader@0.1.2':
+  '@lbcamden/vite-plugin-nunjucks-loader@0.2.0':
     dependencies:
       esbuild: 0.27.4
       escape-string-regexp: 5.0.0
