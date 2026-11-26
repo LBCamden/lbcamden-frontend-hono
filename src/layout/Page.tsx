@@ -72,12 +72,12 @@ export async function Page(baseProps: PageProps) {
     <html lang="en" class={`govuk-template ${htmlClasses}`}>
       <head>
         <meta charset="utf-8" />
-        <title>{{ pageTitle }}</title>
+        <title>{pageTitle}</title>
 
         <meta name="description" content={metaDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-        <meta name="theme-color" content="{{ themeColor | default('#101812') }}" />
+        <meta name="theme-color" content="#101812" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         {headIcons ?? (
